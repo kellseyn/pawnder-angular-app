@@ -1,39 +1,10 @@
 
-<!--&lt;!&ndash; saved from url=(0136)https://a.udemycdn.com/2019-08-23_05-33-38-2ef09f50675d6f46e53be04e6b97b2c8/original.html?nva=20200303175438&token=0771d733e4f2cc8c285b5 &ndash;&gt;-->
-<!--<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body><div style="text-align:center">-->
-  <!--<h1>-->
-    <!--Welcome to {{ title }}!-->
-  <!--</h1>-->
-  <!--<input type="text" [(ngModel)]="name">-->
-  <!--<p>{{ name }}</p>-->
-  <!--<hr>-->
 
-  <!--<app-servers></app-servers>-->
-  <!--<app-warning-alert></app-warning-alert>-->
-  <!--<app-success-alert></app-success-alert>-->
-
-  <!--<hr>-->
-  <!--<label>Username</label>-->
-  <!--<input type="text" class="form-control" [(ngModel)]="username">-->
-  <!--<p>{{ username }}</p>-->
-  <!--<button-->
-    <!--class="btn btn-primary"-->
-    <!--[disabled]="username === ''"-->
-  <!--(click)="username = ''">Reset user</button>-->
-
-  <!--&lt;!&ndash;<button class="btn btn-primary" (click)="showSecret = !showSecret">Display details</button>&ndash;&gt;-->
-  <!--<button class="btn btn-primary" (click)="onToggleDetails()">Display details</button>-->
-  <!--<p *ngIf="showSecret">Secret password = tuna</p>-->
-  <!--<div-->
-    <!--*ngFor="let logItem of log; let i = index"-->
-    <!--[ngStyle]="{backgroundColor: i >= 4 ? 'blue' : 'transparent'}"-->
-    <!--[ngClass]="{'white-text': i >= 4}"-->
-  <!--&gt;{{  logItem }}</div>-->
-<!--</div>-->
-
-
-
-<!--</body></html>-->
+<app-header></app-header>
 <div class="container">
-  <h1>i'm working</h1>
+  <div class="row">
+    <div class="col-md-12">
+      <app-shelters></app-shelters>
+    </div>
+  </div>
 </div>
