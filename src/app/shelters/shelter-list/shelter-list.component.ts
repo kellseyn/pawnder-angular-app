@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shelter-list.component.css']
 })
 export class ShelterListComponent implements OnInit {
-
+  shelters = [];
   constructor() { }
 
   ngOnInit(): void {
