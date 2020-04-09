@@ -3,16 +3,23 @@
     <div class="btn btn-success">New Shelter</div>
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-xs-12">
-    <a href="#" class="list-group-item clearfix">
+    <a
+      href="#"
+      class="list-group-item clearfix"
+      *ngFor="let shelter of shelters">
       <div class="pull-left">
-        <h4 class="list-group-item-heading">Shelter Name</h4>
-        <p class="list-group-item-test">Location</p>
-        <p class="list-group-item-test text-primary">Phone Number</p>
+        <h4 class="list-group-item-heading">{{  shelter.name }}</h4>
+        <p class="list-group-item-test">{{  shelter.location  }}</p>
+        <p class="list-group-item-test text-primary">{{ shelter.phoneNumber  }}</p>
       </div>
       <span class="pull-right">
-        <img src="" alt="" class="img-responsive" style="max-height: 50px;">
+        <img [src]="shelter.imagePath"
+             alt="{{ shelter.name  }}"
+             class="img-responsive"
+             style="max-height: 50px;">
       </span>
     </a>
     <app-shelter-name></app-shelter-name>
