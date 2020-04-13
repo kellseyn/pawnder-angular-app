@@ -3,7 +3,16 @@
     <app-animal-edit></app-animal-edit>
     <hr>
     <ul class="list-group">
-      <a href="#" class="list-group-item" style="cursor: pointer"></a>
+      <a
+        class="list-group-item"
+        style="cursor: pointer"
+      *ngFor="let animal of animals">
+        {{  animal.name }},
+        {{  animal.age  }},
+        {{  animal.gender }}
+        <br>
+        {{  animal. bio }}
+      </a>
     </ul>
   </div>
 </div>
