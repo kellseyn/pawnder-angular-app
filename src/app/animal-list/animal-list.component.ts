@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./animal-list.component.css']
 })
 export class AnimalListComponent implements OnInit {
-
+  animals = [];
   constructor() { }
 
   ngOnInit(): void {
