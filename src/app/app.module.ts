@@ -12,6 +12,7 @@ import { ShelterDetailComponent } from './shelters/shelter-detail/shelter-detail
 import { ShelterNameComponent } from './shelters/shelter-list/shelter-name/shelter-name.component';
 import { AnimalListComponent } from './animal-list/animal-list.component';
 import { AnimalEditComponent } from './animal-list/animal-edit/animal-edit.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AnimalEditComponent } from './animal-list/animal-edit/animal-edit.compo
     ShelterDetailComponent,
     ShelterNameComponent,
     AnimalListComponent,
-    AnimalEditComponent
+    AnimalEditComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,12 @@
+.container {
+  background-color: beige;
+  padding-top: 1em;
+}
+
+html {
+  background-color: mediumpurple;
+}
+
 h1 {
   color: blue;
 }
