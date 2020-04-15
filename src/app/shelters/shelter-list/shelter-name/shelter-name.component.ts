@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {Shelter} from '../../shelter.model';
+
 
 @Component({
   selector: 'app-shelter-name',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shelter-name.component.css']
 })
 export class ShelterNameComponent implements OnInit {
+  @Input() shelter: Shelter;
 
   constructor() { }
 
