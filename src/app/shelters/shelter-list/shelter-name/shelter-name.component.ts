@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import {Shelter} from '../../shelter.model';
 
 
@@ -9,10 +9,15 @@ import {Shelter} from '../../shelter.model';
 })
 export class ShelterNameComponent implements OnInit {
   @Input() shelter: Shelter;
+  @Output() shelterSelected = new EventEmitter<void>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSelected() {
+    this.shelterSelected.emit();
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import {  Shelter } from '../shelter.model';
 
 @Component({
@@ -7,6 +7,7 @@ import {  Shelter } from '../shelter.model';
   styleUrls: ['./shelter-list.component.css']
 })
 export class ShelterListComponent implements OnInit {
+  @Output() shelterWasSelected = new EventEmitter<Shelter>();
   shelters: Shelter[] = [
     new Shelter('Coit North Veterinary Hospital',
       'Plano, Tx',
@@ -17,6 +18,10 @@ export class ShelterListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onShelterSelected(shelter: Shelter) {
+    this.shelterWasSelected.emit(shelter);
   }
 
 }

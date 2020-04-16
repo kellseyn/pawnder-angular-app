@@ -9,6 +9,7 @@
 
     <app-shelter-name
       *ngFor="let shelterEl of shelters"
-      [shelter]="shelterEl"></app-shelter-name>
+      [shelter]="shelterEl"
+    (shelterSelected)="onShelterSelected(shelterEl)"></app-shelter-name>
   </div>
 </div>

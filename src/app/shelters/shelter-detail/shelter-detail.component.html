@@ -1,11 +1,15 @@
 <div class="row">
   <div class="col-xs-12">
-    <img src="" alt="" class="img-responsive">
+    <img
+      [src]="shelter.imagePath"
+      alt="{{shelter.name}}"
+      class="img-responsive"
+      style="max-height: 300px">
   </div>
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <h1>Shelter Name</h1>
+    <h1>{{  shelter.name  }}</h1>
   </div>
 </div>
 <div class="row">
@@ -25,10 +29,10 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    Animals
+    {{  shelter.location  }}
   </div>
 </div><div class="row">
   <div class="col-xs-12">
-
+    {{  shelter.phoneNumber }}
   </div>
 </div>
