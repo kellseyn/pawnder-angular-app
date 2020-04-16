@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-xs-10">
-    <app-animal-edit></app-animal-edit>
+    <app-animal-edit
+    (animalAdded)="onAnimalAdded($event)"></app-animal-edit>
     <hr>
     <ul class="list-group">
       <a
@@ -8,11 +9,14 @@
         style="cursor: pointer"
       *ngFor="let animal of animals">
         {{  animal.name }},
+        {{  animal.gender }},
         {{  animal.age  }},
-        {{  animal.gender }}
+        {{  animal.bio }}
+
         <br>
-        <img [src]="animal.imgPath" style="max-height: 200px">
-        {{  animal. bio }}
+
+        <img [src]="animal.imgPath" style="max-height: 200px" alt="animal.name">
+
       </a>
     </ul>
   </div>
