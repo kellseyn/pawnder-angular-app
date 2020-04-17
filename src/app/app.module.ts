@@ -13,6 +13,7 @@ import { ShelterNameComponent } from './shelters/shelter-list/shelter-name/shelt
 import { AnimalListComponent } from './animal-list/animal-list.component';
 import { AnimalEditComponent } from './animal-list/animal-edit/animal-edit.component';
 import { FooterComponent } from './footer/footer.component';
+import {DropdownDirective} from './shared/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FooterComponent } from './footer/footer.component';
     ShelterNameComponent,
     AnimalListComponent,
     AnimalEditComponent,
-    FooterComponent
+    FooterComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
