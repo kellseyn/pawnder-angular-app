@@ -1,6 +1,8 @@
 import {Shelter} from './shelter.model';
+import {EventEmitter} from '@angular/core';
 
 export class ShelterService {
+  shelterSelected = new EventEmitter<Shelter>();
 
   private shelters: Shelter[] = [
     new Shelter('Coit North Veterinary Hospital',

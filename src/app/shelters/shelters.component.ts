@@ -11,9 +11,15 @@ import {ShelterService} from './shelter.service';
 export class SheltersComponent implements OnInit {
   selectedShelter: Shelter;
 
-  constructor() { }
+  constructor(private shelterService: ShelterService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.shelterService.shelterSelected
+      .subscribe(
+        (shelter: Shelter) => {
+          this.selectedShelter = shelter;
+        }
+      );
   }
 
 }

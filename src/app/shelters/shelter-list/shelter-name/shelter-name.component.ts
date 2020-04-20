@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import {Shelter} from '../../shelter.model';
+import {ShelterService} from '../../shelter.service';
 
 
 @Component({
@@ -9,15 +10,14 @@ import {Shelter} from '../../shelter.model';
 })
 export class ShelterNameComponent implements OnInit {
   @Input() shelter: Shelter;
-  @Output() shelterSelected = new EventEmitter<void>();
 
-  constructor() { }
+  constructor(private shelterService: ShelterService) { }
 
   ngOnInit(): void {
   }
 
   onSelected() {
-    this.shelterSelected.emit();
+    this.shelterService.shelterSelected.emit(this.shelter);
   }
 
 }

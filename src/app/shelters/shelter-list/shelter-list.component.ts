@@ -8,7 +8,6 @@ import {ShelterService} from '../shelter.service';
   styleUrls: ['./shelter-list.component.css']
 })
 export class ShelterListComponent implements OnInit {
-  @Output() shelterWasSelected = new EventEmitter<Shelter>();
   shelters: Shelter[];
 
   constructor(private shelterService: ShelterService) {
@@ -18,9 +17,4 @@ export class ShelterListComponent implements OnInit {
   ngOnInit() {
     this.shelters = this.shelterService.getShelters();
   }
-
-  onShelterSelected(shelter: Shelter) {
-    this.shelterWasSelected.emit(shelter);
-  }
-
 }
