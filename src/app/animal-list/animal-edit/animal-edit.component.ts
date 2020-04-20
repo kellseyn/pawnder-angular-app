@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
 import {Animal} from '../../shared/animal.model';
+import {AnimalListService} from '../animal-list.service';
 
 @Component({
   selector: 'app-animal-edit',
@@ -12,9 +13,8 @@ export class AnimalEditComponent implements OnInit {
   @ViewChild('genderInput') genderInputRef: ElementRef;
   @ViewChild('bioInput') bioInputRef: ElementRef;
   @ViewChild('imgPathInput') imgPathInputRef: ElementRef;
-  @Output() animalAdded = new EventEmitter<Animal>();
 
-  constructor() { }
+  constructor(private alService: AnimalListService) { }
 
   ngOnInit(): void {
   }
@@ -26,7 +26,7 @@ export class AnimalEditComponent implements OnInit {
     const animalBio = this.bioInputRef.nativeElement.value;
     const animalImgPath = this.imgPathInputRef.nativeElement.value;
     const newAnimal = new Animal(animalName, animalGender, animalAge, animalImgPath, animalBio);
-    this.animalAdded.emit(newAnimal);
+    this.alService.addAnimal(newAnimal);
   }
 
 }

@@ -14,6 +14,7 @@ import { AnimalListComponent } from './animal-list/animal-list.component';
 import { AnimalEditComponent } from './animal-list/animal-edit/animal-edit.component';
 import { FooterComponent } from './footer/footer.component';
 import {DropdownDirective} from './shared/dropdown.directive';
+import {AnimalListService} from './animal-list/animal-list.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import {DropdownDirective} from './shared/dropdown.directive';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AnimalListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
