@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Animal } from '../shared/animal.model';
 import {AnimalListService} from './animal-list.service';
+import {animate} from '@angular/animations';
 
 @Component({
   selector: 'app-animal-list',
@@ -15,6 +16,12 @@ export class AnimalListComponent implements OnInit {
 
   ngOnInit(){
     this.animals = this.alService.getAnimals();
+    this.alService.animalsChanged
+      .subscribe(
+        (animals: Animal[]) => {
+        this.animals = animals;
+        }
+      );
   }
 
 
