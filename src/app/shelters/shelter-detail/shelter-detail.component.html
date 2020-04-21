@@ -31,8 +31,21 @@
   <div class="col-xs-12">
     {{  shelter.location  }}
   </div>
-</div><div class="row">
+</div>
+<div class="row">
   <div class="col-xs-12">
     {{  shelter.phoneNumber }}
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <li class="list-group-item"
+      *ngFor="let animal of shelter.animals">
+        {{ animal.name }}
+        <hr>
+        <img [src]="animal.imgPath" alt="{{animal.name}}">
+      </li>
+    </ul>
   </div>
 </div>
