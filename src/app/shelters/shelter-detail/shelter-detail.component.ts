@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {  Shelter } from '../shelter.model';
+import {ShelterService} from '../shelter.service';
 
 @Component({
   selector: 'app-shelter-detail',
@@ -9,9 +10,12 @@ import {  Shelter } from '../shelter.model';
 export class ShelterDetailComponent implements OnInit {
   @Input() shelter: Shelter;
 
-  constructor() { }
+  constructor(private shelterService: ShelterService) { }
 
   ngOnInit(): void {
   }
 
+  onAddToAnimalList() {
+    this.shelterService.addAnimalsToAnimalList(this.shelter.animals);
+  }
 }

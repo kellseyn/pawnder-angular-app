@@ -20,7 +20,7 @@
         Manage Shelter <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-        <li><a href="#">Add Animal to shelter</a></li>
+        <li><a (click)="onAddToAnimalList()" style="cursor: pointer;">Add to Animal list</a></li>
         <li><a href="#">Edit Animal</a></li>
         <li><a href="#">Delete Animal from shelter</a></li>
       </ul>
@@ -42,9 +42,13 @@
     <ul class="list-group">
       <li class="list-group-item"
       *ngFor="let animal of shelter.animals">
-        {{ animal.name }}
-        <hr>
-        <img [src]="animal.imgPath" alt="{{animal.name}}">
+        {{ animal.name }},
+        {{  animal.gender }},
+        {{  animal.age  }},
+        {{  animal.bio }}
+        <br>
+
+        <img [src]="animal.imgPath" style="max-height: 200px" alt="animal.name">
       </li>
     </ul>
   </div>

@@ -1,7 +1,9 @@
 import {Shelter} from './shelter.model';
-import {EventEmitter} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import { Animal} from '../shared/animal.model';
+import { AnimalListService } from '../animal-list/animal-list.service';
 
+@Injectable()
 export class ShelterService {
   shelterSelected = new EventEmitter<Shelter>();
 
@@ -21,7 +23,13 @@ export class ShelterService {
       ])
   ];
 
+  constructor(private alService: AnimalListService) {}
+
   getShelters() {
     return this.shelters.slice();
+  }
+
+  addAnimalsToAnimalList(animals: Animal[]) {
+    this.alService.addAnimals(animals);
   }
 }
