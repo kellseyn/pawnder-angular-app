@@ -16,6 +16,7 @@ import { FooterComponent } from './footer/footer.component';
 import {DropdownDirective} from './shared/dropdown.directive';
 import {AnimalListService} from './animal-list/animal-list.service';
 import { Routes, RouterModule} from '@angular/router';
+import { SplashComponent } from './splash/splash.component';
 
 const appRoutes: Routes = [
   // { path: '', component: ServersComponent },
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
     AnimalListComponent,
     AnimalEditComponent,
     FooterComponent,
-    DropdownDirective
+    DropdownDirective,
+    SplashComponent
   ],
   imports: [
     BrowserModule,
