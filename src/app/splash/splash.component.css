@@ -1,0 +1,11 @@
+.jumbotron.jumbotron-fluid {
+  background-color: white;
+  background-image: url("https://williamsonsource.com/wp-content/uploads/2020/01/kittens.jpg");
+  background-repeat: no-repeat;
+
+  background-size: 100% auto;
+  display: block;
+}
+.container {
+  height: 400px;
+}

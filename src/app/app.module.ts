@@ -19,7 +19,7 @@ import { Routes, RouterModule} from '@angular/router';
 import { SplashComponent } from './splash/splash.component';
 
 const appRoutes: Routes = [
-  // { path: '', component: ServersComponent },
+  { path: '', component: SplashComponent },
   { path: 'shelters', component: SheltersComponent },
   { path: 'animals', component: AnimalListComponent }
 ];
