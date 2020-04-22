@@ -15,6 +15,13 @@ import { AnimalEditComponent } from './animal-list/animal-edit/animal-edit.compo
 import { FooterComponent } from './footer/footer.component';
 import {DropdownDirective} from './shared/dropdown.directive';
 import {AnimalListService} from './animal-list/animal-list.service';
+import { Routes, RouterModule} from '@angular/router';
+
+const appRoutes: Routes = [
+  // { path: '', component: ServersComponent },
+  { path: 'shelters', component: SheltersComponent },
+  { path: 'animals', component: AnimalListComponent }
+];
 
 @NgModule({
   declarations: [
@@ -33,7 +40,8 @@ import {AnimalListService} from './animal-list/animal-list.service';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [AnimalListService],
   bootstrap: [AppComponent]
