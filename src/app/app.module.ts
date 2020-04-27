@@ -17,12 +17,9 @@ import {DropdownDirective} from './shared/dropdown.directive';
 import {AnimalListService} from './animal-list/animal-list.service';
 import { Routes, RouterModule} from '@angular/router';
 import { SplashComponent } from './splash/splash.component';
+import { AppRoutingModule } from './app-routing.module';
 
-const appRoutes: Routes = [
-  { path: '', component: SplashComponent },
-  { path: 'shelters', component: SheltersComponent },
-  { path: 'animals', component: AnimalListComponent }
-];
+
 
 @NgModule({
   declarations: [
@@ -43,7 +40,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   providers: [AnimalListService],
   bootstrap: [AppComponent]
