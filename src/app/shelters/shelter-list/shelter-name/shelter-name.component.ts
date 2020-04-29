@@ -9,6 +9,7 @@ import {Shelter} from '../../shelter.model';
 })
 export class ShelterNameComponent implements OnInit {
   @Input() shelter: Shelter;
+  @Input() index: number;
 
   ngOnInit(): void {
   }

@@ -8,7 +8,8 @@
   <div class="col-xs-12">
 
     <app-shelter-name
-      *ngFor="let shelterEl of shelters"
-      [shelter]="shelterEl"></app-shelter-name>
+      *ngFor="let shelterEl of shelters; let i = index"
+      [shelter]="shelterEl"
+      [index]="i"></app-shelter-name>
   </div>
 </div>
