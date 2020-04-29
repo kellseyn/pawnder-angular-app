@@ -29,6 +29,10 @@ export class ShelterService {
     return this.shelters.slice();
   }
 
+  getShelter(index: number) {
+    return this.shelters[index];
+  }
+
   addAnimalsToAnimalList(animals: Animal[]) {
     this.alService.addAnimals(animals);
   }

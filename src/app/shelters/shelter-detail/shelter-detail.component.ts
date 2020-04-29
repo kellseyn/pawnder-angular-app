@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {  Shelter } from '../shelter.model';
 import {ShelterService} from '../shelter.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-shelter-detail',
@@ -8,11 +9,20 @@ import {ShelterService} from '../shelter.service';
   styleUrls: ['./shelter-detail.component.css']
 })
 export class ShelterDetailComponent implements OnInit {
-  @Input() shelter: Shelter;
+  shelter: Shelter;
+  id: number;
 
-  constructor(private shelterService: ShelterService) { }
+  constructor(private shelterService: ShelterService,
+              private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.route.snapshot.params
+      .subscribe(
+        (params: Params) => {
+          this.id = +params['id'];
+          this.shelter = this.shelterService.getShelter(this.id);
+        }
+      );
   }
 
   onAddToAnimalList() {
