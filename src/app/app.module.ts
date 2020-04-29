@@ -18,6 +18,7 @@ import {AnimalListService} from './animal-list/animal-list.service';
 import { Routes, RouterModule} from '@angular/router';
 import { SplashComponent } from './splash/splash.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ShelterStartComponent } from './shelters/shelter-start/shelter-start.component';
 
 
 
@@ -35,7 +36,8 @@ import { AppRoutingModule } from './app-routing.module';
     AnimalEditComponent,
     FooterComponent,
     DropdownDirective,
-    SplashComponent
+    SplashComponent,
+    ShelterStartComponent
   ],
   imports: [
     BrowserModule,
