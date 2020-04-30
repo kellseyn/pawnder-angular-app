@@ -5,12 +5,16 @@ import {AnimalListComponent} from './animal-list/animal-list.component';
 import {SplashComponent} from './splash/splash.component';
 import { ShelterStartComponent } from './shelters/shelter-start/shelter-start.component';
 import { ShelterDetailComponent } from './shelters/shelter-detail/shelter-detail.component';
+import { ShelterEditComponent } from './shelters/shelter-edit/shelter-edit.component';
 
 const appRoutes: Routes = [
     { path: '', component: SplashComponent },
     { path: 'shelters', component: SheltersComponent, children: [
         { path: '', component: ShelterStartComponent },
-        { path: ':id', component: ShelterDetailComponent }
+        { path: 'new', component: ShelterEditComponent},
+        { path: ':id', component: ShelterDetailComponent },
+        { path: ':id/edit', component: ShelterEditComponent}
+
     ] },
     { path: 'animals', component: AnimalListComponent }
   ];

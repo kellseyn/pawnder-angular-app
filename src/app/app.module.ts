@@ -19,6 +19,7 @@ import { Routes, RouterModule} from '@angular/router';
 import { SplashComponent } from './splash/splash.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ShelterStartComponent } from './shelters/shelter-start/shelter-start.component';
+import { ShelterEditComponent } from './shelters/shelter-edit/shelter-edit.component';
 
 
 
@@ -37,7 +38,8 @@ import { ShelterStartComponent } from './shelters/shelter-start/shelter-start.co
     FooterComponent,
     DropdownDirective,
     SplashComponent,
-    ShelterStartComponent
+    ShelterStartComponent,
+    ShelterEditComponent
   ],
   imports: [
     BrowserModule,
