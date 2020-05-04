@@ -1,8 +1,8 @@
 import {Animal} from '../shared/animal.model';
-import {EventEmitter} from '@angular/core';
+import { Subject } from 'rxjs';
 
 export class AnimalListService {
-  animalsChanged = new EventEmitter<Animal[]>();
+  animalsChanged = new Subject<Animal[]>();
   private animals: Animal[] = [
     new Animal(
       'Houdini',
@@ -24,7 +24,7 @@ export class AnimalListService {
 
   addAnimal(animal: Animal) {
     this.animals.push(animal);
-    this.animalsChanged.emit(this.animals.slice());
+    this.animalsChanged.next(this.animals.slice());
   }
 
   addAnimals(animals: Animal[]) {
@@ -32,7 +32,7 @@ export class AnimalListService {
     //   this.addAnimal(animal);
     // }
     this.animals.push(...animals);
-    this.animalsChanged.emit(this.animals.slice());
+    this.animalsChanged.next(this.animals.slice());
 
   }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Shelter} from './shelter.model';
 import {ShelterService} from './shelter.service';
 
 @Component({
@@ -9,17 +8,11 @@ import {ShelterService} from './shelter.service';
   providers: [ShelterService]
 })
 export class SheltersComponent implements OnInit {
-  selectedShelter: Shelter;
 
-  constructor(private shelterService: ShelterService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.shelterService.shelterSelected
-      .subscribe(
-        (shelter: Shelter) => {
-          this.selectedShelter = shelter;
-        }
-      );
+    
   }
 
 }

@@ -1,27 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Animal } from '../shared/animal.model';
 import {AnimalListService} from './animal-list.service';
 import {animate} from '@angular/animations';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-animal-list',
   templateUrl: './animal-list.component.html',
   styleUrls: ['./animal-list.component.css']
 })
-export class AnimalListComponent implements OnInit {
+export class AnimalListComponent implements OnInit, OnDestroy {
   animals: Animal[];
+  private aniChangeSub: Subscription;
 
   constructor(private alService: AnimalListService) { }
 
   ngOnInit(){
     this.animals = this.alService.getAnimals();
-    this.alService.animalsChanged
+    this.aniChangeSub = this.alService.animalsChanged
       .subscribe(
         (animals: Animal[]) => {
         this.animals = animals;
         }
       );
+  }
+
+  ngOnDestroy(): void {
+    this.aniChangeSub.unsubscribe;
   }
 
 

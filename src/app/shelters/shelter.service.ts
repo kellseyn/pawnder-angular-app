@@ -1,11 +1,12 @@
 import {Shelter} from './shelter.model';
-import {EventEmitter, Injectable} from '@angular/core';
+import { Injectable} from '@angular/core';
 import { Animal} from '../shared/animal.model';
 import { AnimalListService } from '../animal-list/animal-list.service';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class ShelterService {
-  shelterSelected = new EventEmitter<Shelter>();
+  shelterSelected = new Subject<Shelter>();
 
   private shelters: Shelter[] = [
     new Shelter(
