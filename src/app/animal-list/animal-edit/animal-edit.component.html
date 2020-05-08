@@ -10,6 +10,7 @@
             class="form-control"
             name="name"
             ngModel
+            required
             >
         </div>
         <div class="col-sm-1 form-group">
@@ -18,7 +19,9 @@
                  id="age"
                  class="form-control"
                  name="age"
-                 ngModel>
+                 ngModel
+                 required
+                 [pattern]="'^[1-9]+[0-9]*$'">
         </div>
         <div class="col-sm-2 form-group">
           <label for="gender">Gender</label>
@@ -26,7 +29,8 @@
                   id="gender"
                   class="form-control"
                   name="gender"
-                  ngModel>
+                  ngModel
+                  required>
             <option value="M">M</option>
             <option value="F">F</option>
           </select>
@@ -38,7 +42,8 @@
                     name="bio"
                     class="form-control"
                     name="bio"
-                    ngModel></textarea>
+                    ngModel
+                    required></textarea>
         </div>
         <div class="col-sm-3">
           <label for="imgPath">Image URL</label>
@@ -47,12 +52,16 @@
             id="imgPath"
             class="form-control"
             name="imgURL"
-            ngModel>
+            ngModel
+            required>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <button class="btn btn-success" type="submit">Add</button>
+          <button 
+          class="btn btn-success" 
+          type="submit" 
+          [disabled]="!f.valid">Add</button>
           <button class="btn btn-danger" type="button">Remove</button>
           <button class="btn btn-primary" type="button">Clear</button>
         </div>
