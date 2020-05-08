@@ -1,8 +1,3 @@
-body {
-  background: rebeccapurple;
-  background: linear-gradient(to right, mediumslateblue, plum);
-}
-
 p {
   padding: 1em;
   padding-left: 0;
@@ -29,7 +24,12 @@ color: black;
 }
 
 #sticky-footer {
-  flex-shrink: 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: rebeccapurple;
+  background: linear-gradient(to right, mediumslateblue, plum);
 }
 
 .creds {
