@@ -10,9 +10,11 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./animal-edit.component.css']
 })
 export class AnimalEditComponent implements OnInit, OnDestroy {
+  @ViewChild('f') alForm: NgForm;
   subscription: Subscription;
   editMode = false;
-  editedItemIndex: number;
+  editedAnimalIndex: number;
+  editedAnimal: Animal;
 
   constructor(private alService: AnimalListService) { }
 
@@ -20,15 +22,25 @@ export class AnimalEditComponent implements OnInit, OnDestroy {
     this.subscription = this.alService.startedEditing
       .subscribe(
         (index: number) => {
-          this.editedItemIndex = index;
+          this.editedAnimalIndex = index;
           this.editMode = true;
+          this.editedAnimal = this.alService.getAnimal(index);
+          this.alForm.setValue({
+            name: this.editedAnimal.name,
+            gender: this.editedAnimal.gender,
+            age: this.editedAnimal.age,
+            imgPath: this.editedAnimal.imgPath,
+            bio: this.editedAnimal.bio,
+            
+
+          })
         }
       );
   }
 
   onAddAnimal(form: NgForm) {
     const value = form.value;
-    const newAnimal = new Animal(value.name, value.gender, value.age, value.imgURL, value.bio);
+    const newAnimal = new Animal(value.name, value.gender, value.age, value.imgPath, value.bio);
     this.alService.addAnimal(newAnimal);
   }
 

@@ -23,6 +23,10 @@ export class AnimalListService {
     return this.animals.slice();
   }
 
+  getAnimal(index: number) {
+    return this.animals[index];
+  }
+
   addAnimal(animal: Animal) {
     this.animals.push(animal);
     this.animalsChanged.next(this.animals.slice());
