@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 
 export class AnimalListService {
   animalsChanged = new Subject<Animal[]>();
+  startedEditing = new Subject<number>();
   private animals: Animal[] = [
     new Animal(
       'Houdini',

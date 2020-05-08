@@ -26,6 +26,10 @@ export class AnimalListComponent implements OnInit, OnDestroy {
       );
   }
 
+  onEditAnimal(index: number) {
+    this.alService.startedEditing.next(index);
+  }
+
   ngOnDestroy(): void {
     this.aniChangeSub.unsubscribe;
   }
