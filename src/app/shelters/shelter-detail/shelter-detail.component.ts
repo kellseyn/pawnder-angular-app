@@ -17,7 +17,7 @@ export class ShelterDetailComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.route.snapshot.params
+    this.route.params
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];
