@@ -41,7 +41,11 @@ export class AnimalEditComponent implements OnInit, OnDestroy {
   onAddAnimal(form: NgForm) {
     const value = form.value;
     const newAnimal = new Animal(value.name, value.gender, value.age, value.imgPath, value.bio);
-    this.alService.addAnimal(newAnimal);
+    if (this.editMode) {
+      this.alService.updateAnimal(this.editedAnimalIndex, newAnimal);
+    } else {
+      this.alService.addAnimal(newAnimal);
+    }
   }
 
   ngOnDestroy() {

@@ -40,4 +40,9 @@ export class AnimalListService {
     this.animalsChanged.next(this.animals.slice());
 
   }
+
+  updateAnimal(index: number, newAnimal: Animal) {
+    this.animals[index] = newAnimal;
+    this.animalsChanged.next(this.animals.slice());
+  }
 }
