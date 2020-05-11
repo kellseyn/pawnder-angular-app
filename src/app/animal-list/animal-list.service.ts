@@ -45,4 +45,9 @@ export class AnimalListService {
     this.animals[index] = newAnimal;
     this.animalsChanged.next(this.animals.slice());
   }
+
+  deleteAnimal(index: number) {
+    this.animals.splice(index, 1);
+    this.animalsChanged.next(this.animals.slice());
+  }
 }
