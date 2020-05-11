@@ -50,6 +50,11 @@ export class AnimalEditComponent implements OnInit, OnDestroy {
     form.reset();
   }
 
+  onClear() {
+    this.alForm.reset();
+    this.editMode = false;
+  }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
