@@ -20,6 +20,7 @@ import { SplashComponent } from './splash/splash.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ShelterStartComponent } from './shelters/shelter-start/shelter-start.component';
 import { ShelterEditComponent } from './shelters/shelter-edit/shelter-edit.component';
+import { ShelterService } from './shelters/shelter.service';
 
 
 
@@ -47,7 +48,7 @@ import { ShelterEditComponent } from './shelters/shelter-edit/shelter-edit.compo
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [AnimalListService],
+  providers: [AnimalListService, ShelterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
