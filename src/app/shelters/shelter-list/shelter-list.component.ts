@@ -18,6 +18,12 @@ export class ShelterListComponent implements OnInit {
 }
 
   ngOnInit() {
+    this.shelterService.sheltersChanged
+      .subscribe(
+        (shelters: Shelter[]) => {
+          this.shelters = shelters;
+        }
+      )
     this.shelters = this.shelterService.getShelters();
   }
 

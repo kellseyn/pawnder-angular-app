@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { ShelterService } from '../shelter.service';
+import { Shelter } from '../shelter.model';
 
 @Component({
   selector: 'app-shelter-edit',
@@ -28,7 +29,18 @@ export class ShelterEditComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.shelterForm);
+      // const newShelter = new Shelter(
+      //   this.shelterForm.value['name'],
+      //   this.shelterForm.value['location'],
+      //   this.shelterForm.value['phoneNumber'],
+      //   this.shelterForm.value['imagePath'],
+      //   this.shelterForm.value['animals']);
+
+      if (this.editMode) {
+        this.shelterService.updateShelter(this.id, this.shelterForm.value);
+      } else {
+        this.shelterService.addShelter(this.shelterForm.value);
+      }
   }
 
   onAddAnimal() {

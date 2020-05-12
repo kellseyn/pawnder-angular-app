@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 
 @Injectable()
 export class ShelterService {
+  sheltersChanged = new Subject<Shelter[]>();
   shelterSelected = new Subject<Shelter>();
 
   private shelters: Shelter[] = [
@@ -51,5 +52,16 @@ export class ShelterService {
 
   addAnimalsToAnimalList(animals: Animal[]) {
     this.alService.addAnimals(animals);
+  }
+
+  addShelter(shelter: Shelter) {
+      this.shelters.push(shelter);
+      this.sheltersChanged.next(this.shelters.slice());
+  }
+
+  updateShelter(index: number, newShelter: Shelter) {
+    this.shelters[index] = newShelter;
+    this.sheltersChanged.next(this.shelters.slice());
+
   }
 }
