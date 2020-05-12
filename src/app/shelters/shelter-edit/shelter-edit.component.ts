@@ -27,6 +27,10 @@ export class ShelterEditComponent implements OnInit {
       );
   }
 
+  onSubmit() {
+    console.log(this.shelterForm);
+  }
+
   private initForm() {
     let shelterName = '';
     let shelterImagePath = '';
