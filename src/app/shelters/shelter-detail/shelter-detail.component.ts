@@ -33,4 +33,8 @@ export class ShelterDetailComponent implements OnInit {
   onEditShelter(){
     this.router.navigate(['edit'], {relativeTo: this.route});
   }
+
+  onDeleteShelter() {
+    this.shelterService.deleteShelter(this.id);
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { ShelterService } from '../shelter.service';
 import { Shelter } from '../shelter.model';
@@ -15,7 +15,8 @@ export class ShelterEditComponent implements OnInit {
   shelterForm: FormGroup;
 
   constructor(private route: ActivatedRoute,
-              private shelterService: ShelterService) { }
+              private shelterService: ShelterService,
+              private router: Router) { }
 
   ngOnInit(){
     this.route.params
@@ -41,6 +42,7 @@ export class ShelterEditComponent implements OnInit {
       } else {
         this.shelterService.addShelter(this.shelterForm.value);
       }
+      this.onCancel();
   }
 
   onAddAnimal() {
@@ -55,6 +57,10 @@ export class ShelterEditComponent implements OnInit {
         'bio': new FormControl(null, Validators.required)
       })
     )
+  }
+
+  onCancel() {
+    this.router.navigate(['../'], {relativeTo: this.route});
   }
 
   private initForm() {
