@@ -3,7 +3,10 @@
         <form [formGroup]="shelterForm" (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="col-xs-12">
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button 
+                    type="submit" 
+                    class="btn btn-success"
+                    [disabled]="!shelterForm.valid">Save</button>
                     <button type="button" class="btn btn-danger">Cancel</button>
 
                 </div>
@@ -78,7 +81,6 @@
                           id="name"
                           class="form-control"
                           formControlName="name"
-                          required
                           >
                       </div>
                       <div class="col-sm-2">
@@ -86,17 +88,14 @@
                         <input type="number"
                                id="age"
                                class="form-control"
-                               formControlName="age"
-                               required
-                               [pattern]="'^[1-9]+[0-9]*$'">
+                               formControlName="age">
                       </div>
                       <div class="col-sm-2">
                         <label for="gender">Gender</label>
                         <select name="gender"
                                 id="gender"
                                 class="form-control"
-                                formControlName="gender"
-                                required>
+                                formControlName="gender">
                           <option value="M">M</option>
                           <option value="F">F</option>
                         </select>
@@ -107,8 +106,7 @@
                                   id="bio" cols="30" rows="1"
                                   name="bio"
                                   class="form-control"
-                                  formControlName="bio"
-                                  required></textarea>
+                                  formControlName="bio"></textarea>
                       </div>
                       <div class="col-sm-11">
                         <label for="imgPath">Image URL</label>
@@ -116,8 +114,7 @@
                           type="text"
                           id="imgPath"
                           class="form-control"
-                          formControlName="imgPath"
-                          required>
+                          formControlName="imgPath">
                       </div>
                       <div class="col-sm-1" style="padding-top: 1.75em;">
                           <button class="btn btn-danger">X</button>

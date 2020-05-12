@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { ShelterService } from '../shelter.service';
 
 @Component({
@@ -34,11 +34,13 @@ export class ShelterEditComponent implements OnInit {
   onAddAnimal() {
     (<FormArray>this.shelterForm.get('animals')).push(
       new FormGroup({
-        'name': new FormControl(),
-        'gender': new FormControl(),
-        'age': new FormControl(),
-        'imgPath': new FormControl(),
-        'bio': new FormControl()
+        'name': new FormControl(null, Validators.required),
+        'gender': new FormControl(null, Validators.required),
+        'age': new FormControl(null, [
+          Validators.required,
+          Validators.pattern(/^[1-9]+[0-9]*$/)]),
+        'imgPath': new FormControl(null, Validators.required),
+        'bio': new FormControl(null, Validators.required)
       })
     )
   }
@@ -61,21 +63,23 @@ export class ShelterEditComponent implements OnInit {
         for (let animal of shelter.animals) {
           shelterAnimals.push(
             new FormGroup({
-              'name': new FormControl(animal.name),
-              'gender': new FormControl(animal.gender),
-              'age': new FormControl(animal.age),
-              'imgPath': new FormControl(animal.imgPath),
-              'bio': new FormControl(animal.bio)
+              'name': new FormControl(animal.name, Validators.required),
+              'gender': new FormControl(animal.gender, Validators.required),
+              'age': new FormControl(animal.age, [
+                Validators.required,
+                Validators.pattern(/^[1-9]+[0-9]*$/)]),
+              'imgPath': new FormControl(animal.imgPath, Validators.required),
+              'bio': new FormControl(animal.bio, Validators.required)
             })
           )
         }
       }
     }
     this.shelterForm = new FormGroup({
-      'name': new FormControl(shelterName),
-      'imagePath': new FormControl(shelterImagePath),
-      'location': new FormControl(shelterLocation),
-      'phoneNumber': new FormControl(shelterPhoneNumber),
+      'name': new FormControl(shelterName, Validators.required),
+      'imagePath': new FormControl(shelterImagePath, Validators.required),
+      'location': new FormControl(shelterLocation, Validators.required),
+      'phoneNumber': new FormControl(shelterPhoneNumber, Validators.required),
       'animals': shelterAnimals
     });
   }
