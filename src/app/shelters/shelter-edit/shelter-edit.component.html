@@ -118,7 +118,10 @@
                           formControlName="imgPath">
                       </div>
                       <div class="col-sm-1" style="padding-top: 1.75em;">
-                          <button class="btn btn-danger">X</button>
+                          <button 
+                          type="button"
+                          class="btn btn-danger"
+                          (click)="onDeleteAnimal(i)">X</button>
                       </div>
                     </div>
                     <hr>

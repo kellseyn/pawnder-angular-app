@@ -59,6 +59,10 @@ export class ShelterEditComponent implements OnInit {
     )
   }
 
+  onDeleteAnimal(index: number) {
+    (<FormArray>this.shelterForm.get('animals')).removeAt(index);
+  }
+
   onCancel() {
     this.router.navigate(['../'], {relativeTo: this.route});
   }
