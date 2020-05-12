@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { ShelterService } from '../shelter.service';
 
 @Component({
@@ -36,6 +36,7 @@ export class ShelterEditComponent implements OnInit {
     let shelterImagePath = '';
     let shelterLocation = '';
     let shelterPhoneNumber = '';
+    let shelterAnimals = new FormArray([]);
 
 
     if (this.editMode) {
@@ -44,12 +45,30 @@ export class ShelterEditComponent implements OnInit {
       shelterImagePath = shelter.imagePath;
       shelterLocation = shelter.location;
       shelterPhoneNumber = shelter.phoneNumber;
+      if (shelter['animals']) {
+        for (let animal of shelter.animals) {
+          shelterAnimals.push(
+            new FormGroup({
+              'name': new FormControl(animal.name),
+              'gender': new FormControl(animal.gender),
+              'age': new FormControl(animal.age),
+              'imgPath': new FormControl(animal.imgPath),
+              'bio': new FormControl(animal.bio)
+            })
+          )
+        }
+      }
     }
     this.shelterForm = new FormGroup({
       'name': new FormControl(shelterName),
       'imagePath': new FormControl(shelterImagePath),
       'location': new FormControl(shelterLocation),
-      'phoneNumber': new FormControl(shelterPhoneNumber)
+      'phoneNumber': new FormControl(shelterPhoneNumber),
+      'animals': shelterAnimals
     });
+  }
+
+  get controls() {
+    return (<FormArray>this.shelterForm.get('animals')).controls;
   }
 }
