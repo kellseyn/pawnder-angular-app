@@ -31,6 +31,18 @@ export class ShelterEditComponent implements OnInit {
     console.log(this.shelterForm);
   }
 
+  onAddAnimal() {
+    (<FormArray>this.shelterForm.get('animals')).push(
+      new FormGroup({
+        'name': new FormControl(),
+        'gender': new FormControl(),
+        'age': new FormControl(),
+        'imgPath': new FormControl(),
+        'bio': new FormControl()
+      })
+    )
+  }
+
   private initForm() {
     let shelterName = '';
     let shelterImagePath = '';

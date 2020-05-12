@@ -69,7 +69,8 @@
                     <h3>Animals</h3>
                     <div class="row" 
                     *ngFor="let animalCtrl of controls; let i = index"
-                    [formGroupName]="i">
+                    [formGroupName]="i"
+                    style="margin-top: 10px;">
                     <div class="col-sm-3">
                         <label for="name">Name</label>
                         <input
@@ -121,6 +122,15 @@
                       <div class="col-sm-1" style="padding-top: 1.75em;">
                           <button class="btn btn-danger">X</button>
                       </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button 
+                            type="button"
+                            class="btn btn-success" 
+                            (click)="onAddAnimal()">Add Animal</button>
+                        </div>
                     </div>
                 </div>
             </div>
