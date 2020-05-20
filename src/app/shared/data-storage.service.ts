@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Shelter } from '../shelters/shelter.model';
 
 import { ShelterService } from '../shelters/shelter.service';
@@ -21,15 +21,19 @@ export class DataStorageService {
     }
 
     fetchShelters() {
-        this.http
+        return this.http
         .get<Shelter[]>('https://pawnder-angular-app.firebaseio.com/shelters.json')
-        .pipe(map(shelters => {
+        .pipe(
+            map(shelters => {
             return shelters.map(shelter => {
-                return {...shelter, animals: shelter.animals ? shelter.animals : []};
+                return {...shelter, animals: shelter.animals ? shelter.animals : []
+                };
             });
-        }))
-        .subscribe(shelters => {
-            this.shelterService.setShelters(shelters);        
-        });
+        }),
+            tap(shelters => {
+                this.shelterService.setShelters(shelters);        
+
+            })
+        )
     }
 }
