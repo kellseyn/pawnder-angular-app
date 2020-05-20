@@ -42,6 +42,11 @@ export class ShelterService {
 
   constructor(private alService: AnimalListService) {}
 
+  setShelters(shelters: Shelter[]) {
+    this.shelters = shelters;
+    this.sheltersChanged.next(this.shelters.slice());
+  }
+
   getShelters() {
     return this.shelters.slice();
   }

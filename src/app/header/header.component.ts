@@ -19,4 +19,7 @@ export class HeaderComponent implements OnInit {
     this.dataStorageService.storeShelters();
   }
 
+  onFetchData() {
+    this.dataStorageService.fetchShelters();
+  }
 }
