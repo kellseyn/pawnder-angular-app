@@ -23,6 +23,7 @@ import { ShelterStartComponent } from './shelters/shelter-start/shelter-start.co
 import { ShelterEditComponent } from './shelters/shelter-edit/shelter-edit.component';
 import { ShelterService } from './shelters/shelter.service';
 import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 
 
@@ -43,7 +44,8 @@ import { AuthComponent } from './auth/auth.component';
     SplashComponent,
     ShelterStartComponent,
     ShelterEditComponent,
-    AuthComponent
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
