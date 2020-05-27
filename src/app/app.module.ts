@@ -22,6 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ShelterStartComponent } from './shelters/shelter-start/shelter-start.component';
 import { ShelterEditComponent } from './shelters/shelter-edit/shelter-edit.component';
 import { ShelterService } from './shelters/shelter.service';
+import { AuthComponent } from './auth/auth.component';
 
 
 
@@ -41,7 +42,8 @@ import { ShelterService } from './shelters/shelter.service';
     DropdownDirective,
     SplashComponent,
     ShelterStartComponent,
-    ShelterEditComponent
+    ShelterEditComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

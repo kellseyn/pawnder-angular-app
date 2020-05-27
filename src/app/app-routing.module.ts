@@ -7,6 +7,7 @@ import { ShelterStartComponent } from './shelters/shelter-start/shelter-start.co
 import { ShelterDetailComponent } from './shelters/shelter-detail/shelter-detail.component';
 import { ShelterEditComponent } from './shelters/shelter-edit/shelter-edit.component';
 import {ShelterResolverService} from './shelters/shelters-resolver.service';
+import { AuthComponent } from './auth/auth.component';
 
 const appRoutes: Routes = [
     { path: '', component: SplashComponent },
@@ -17,7 +18,8 @@ const appRoutes: Routes = [
         { path: ':id/edit', component: ShelterEditComponent, resolve: [ShelterResolverService]}
 
     ] },
-    { path: 'animals', component: AnimalListComponent }
+    { path: 'animals', component: AnimalListComponent },
+    { path: 'auth', component: AuthComponent}
   ];
 
 @NgModule({
