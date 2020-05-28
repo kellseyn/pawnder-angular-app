@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from './auth.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
     selector: 'app-auth',
@@ -30,17 +31,17 @@ export class AuthComponent {
         if (this.isLoginMode) {
             // ...
         } else {
-
-        this.authService.signup(email, password).subscribe(
-            resData => {
-                console.log(resData);
-                this.isLoading = false;
-            },
-            error => {
-                this.error = 'An error occured!';
-                this.isLoading = false;
-            }
-        );
+            this.authService.signup(email, password).subscribe(
+                resData => {
+                    console.log(resData);
+                    this.isLoading = false;
+                },
+                errorMessage => {
+                    console.log(errorMessage);
+                    this.error = errorMessage;
+                    this.isLoading = false;
+                }
+            );
         }
         form.reset();
     }
