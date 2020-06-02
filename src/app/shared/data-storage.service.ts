@@ -27,29 +27,23 @@ export class DataStorageService {
     }
 
     fetchShelters() {
-        return this.authService.user.pipe(
-            take(1), 
-        exhaustMap(user => {
             return this.http
             .get<Shelter[]>(
                 'https://pawnder-angular-app.firebaseio.com/shelters.json?',
-                {
-                    params: new HttpParams().set('auth', user.token)
-                }
-            );
-        }),
-            map(shelters => {
-            return shelters.map(shelter => {
-                return {
-                    ...shelter, 
-                    animals: shelter.animals ? shelter.animals : []
-                };
-            });
-        }),
-            tap(shelters => {
-                this.shelterService.setShelters(shelters);        
+            )
+            .pipe(
+                map(shelters => {
+                    return shelters.map(shelter => {
+                        return {
+                            ...shelter, 
+                            animals: shelter.animals ? shelter.animals : []
+                        };
+                    });
+                }),
+                tap(shelters => {
+                    this.shelterService.setShelters(shelters);        
 
-            })
-        );
+                })
+            );
     }
 }
