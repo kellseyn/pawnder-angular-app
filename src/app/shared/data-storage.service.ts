@@ -1,18 +1,24 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map, tap } from 'rxjs/operators';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { map, tap, take, exhaustMap } from 'rxjs/operators';
 import { Shelter } from '../shelters/shelter.model';
 
 import { ShelterService } from '../shelters/shelter.service';
+import { AuthService } from '../auth/auth.service';
 
 
 @Injectable({providedIn: 'root'})
 export class DataStorageService {
-    constructor(private http: HttpClient, private shelterService: ShelterService) {}
+    constructor(
+        private http: HttpClient, 
+        private shelterService: ShelterService, 
+        private authService: AuthService
+        ) {}
 
     storeShelters() {
         const shelters = this.shelterService.getShelters();
-        return this.http.put('https://pawnder-angular-app.firebaseio.com/shelters.json', 
+        return this.http
+        .put('https://pawnder-angular-app.firebaseio.com/shelters.json', 
         shelters
         )
         .subscribe(response => {
@@ -21,12 +27,22 @@ export class DataStorageService {
     }
 
     fetchShelters() {
-        return this.http
-        .get<Shelter[]>('https://pawnder-angular-app.firebaseio.com/shelters.json')
-        .pipe(
+        return this.authService.user.pipe(
+            take(1), 
+        exhaustMap(user => {
+            return this.http
+            .get<Shelter[]>(
+                'https://pawnder-angular-app.firebaseio.com/shelters.json?',
+                {
+                    params: new HttpParams().set('auth', user.token)
+                }
+            );
+        }),
             map(shelters => {
             return shelters.map(shelter => {
-                return {...shelter, animals: shelter.animals ? shelter.animals : []
+                return {
+                    ...shelter, 
+                    animals: shelter.animals ? shelter.animals : []
                 };
             });
         }),
@@ -34,6 +50,6 @@ export class DataStorageService {
                 this.shelterService.setShelters(shelters);        
 
             })
-        )
+        );
     }
 }
