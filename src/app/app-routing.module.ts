@@ -8,10 +8,14 @@ import { ShelterDetailComponent } from './shelters/shelter-detail/shelter-detail
 import { ShelterEditComponent } from './shelters/shelter-edit/shelter-edit.component';
 import {ShelterResolverService} from './shelters/shelters-resolver.service';
 import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const appRoutes: Routes = [
     { path: '', component: SplashComponent },
-    { path: 'shelters', component: SheltersComponent, children: [
+    { path: 'shelters', 
+    component: SheltersComponent, 
+    canActivate: [AuthGuard], 
+    children: [
         { path: '', component: ShelterStartComponent },
         { path: 'new', component: ShelterEditComponent},
         { path: ':id', component: ShelterDetailComponent, resolve: [ShelterResolverService]},
