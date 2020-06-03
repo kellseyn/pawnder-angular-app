@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,17 +10,11 @@ import { Component } from '@angular/core';
   //   color: dodgerblue;
   // }`]
 })
-export class AppComponent {
-  title = 'PAWnder';
-  name = 'Kellsey';
-  username = '';
-  showSecret = false;
-  log = [];
+export class AppComponent implements OnInit{
+  constructor(private authService: AuthService){}
 
-  onToggleDetails() {
-    this.showSecret = !this.showSecret;
-    // this.log.push(this.log.length + 1);
-    this.log.push(new Date());
+  ngOnInit(){
+    this.authService.autoLogin();
   }
  
 }
