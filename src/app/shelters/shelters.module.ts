@@ -8,6 +8,7 @@ import { ShelterEditComponent } from './shelter-edit/shelter-edit.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SheltersRoutingModule } from './shelters-routing.module'
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     imports: [
         RouterModule, 
         CommonModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        SheltersRoutingModule
     ],
     exports: [
         SheltersComponent,
