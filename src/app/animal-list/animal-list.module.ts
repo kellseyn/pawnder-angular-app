@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import {RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AnimalListComponent } from './animal-list.component';
 import { AnimalEditComponent } from './animal-edit/animal-edit.component';
 import { AnimalListRoutingModule } from './animal-list-routing.module';
@@ -15,7 +15,7 @@ import { AnimalListRoutingModule } from './animal-list-routing.module';
     imports: [
         RouterModule, 
         CommonModule,
-        ReactiveFormsModule,
+        FormsModule,
         AnimalListRoutingModule
     ],
     exports: [
