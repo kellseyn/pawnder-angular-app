@@ -7,7 +7,6 @@ import { AuthComponent } from './auth/auth.component';
 
 const appRoutes: Routes = [
     { path: '', component: SplashComponent },
-    { path: 'animals', component: AnimalListComponent },
     { path: 'auth', component: AuthComponent}
   ];
 
