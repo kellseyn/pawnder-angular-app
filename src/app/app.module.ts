@@ -7,11 +7,10 @@ import { AppComponent } from './app.component';
 import { ServerComponent } from './server/server.component';
 import { ServersComponent } from './servers/servers.component';
 import { HeaderComponent } from './header/header.component';
-import { AnimalListComponent } from './animal-list/animal-list.component';
-import { AnimalEditComponent } from './animal-list/animal-edit/animal-edit.component';
+import { AnimalListModule } from './animal-list/animal-list.module';
 import { FooterComponent } from './footer/footer.component';
-import {DropdownDirective} from './shared/dropdown.directive';
-import {AnimalListService} from './animal-list/animal-list.service';
+import { DropdownDirective} from './shared/dropdown.directive';
+import { AnimalListService} from './animal-list/animal-list.service';
 import { SplashComponent } from './splash/splash.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ShelterService } from './shelters/shelter.service';
@@ -30,8 +29,6 @@ import { SheltersModule } from './shelters/shelters.module';
     ServerComponent,
     ServersComponent,
     HeaderComponent,
-    AnimalListComponent,
-    AnimalEditComponent,
     FooterComponent,
     DropdownDirective,
     SplashComponent,
@@ -46,7 +43,8 @@ import { SheltersModule } from './shelters/shelters.module';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    SheltersModule
+    SheltersModule,
+    AnimalListModule
   ],
   providers: [
     AnimalListService, 
