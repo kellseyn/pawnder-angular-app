@@ -9,17 +9,14 @@ import { ServersComponent } from './servers/servers.component';
 import { HeaderComponent } from './header/header.component';
 import { AnimalListModule } from './animal-list/animal-list.module';
 import { FooterComponent } from './footer/footer.component';
-import { DropdownDirective} from './shared/dropdown.directive';
 import { AnimalListService} from './animal-list/animal-list.service';
 import { SplashComponent } from './splash/splash.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ShelterService } from './shelters/shelter.service';
 import { AuthComponent } from './auth/auth.component';
-import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service'
-import { AlertComponent } from './shared/alert/alert.component';
-import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 import { SheltersModule } from './shelters/shelters.module';
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -30,12 +27,8 @@ import { SheltersModule } from './shelters/shelters.module';
     ServersComponent,
     HeaderComponent,
     FooterComponent,
-    DropdownDirective,
     SplashComponent,
-    AuthComponent,
-    LoadingSpinnerComponent,
-    AlertComponent,
-    PlaceholderDirective
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +37,8 @@ import { SheltersModule } from './shelters/shelters.module';
     HttpClientModule,
     AppRoutingModule,
     SheltersModule,
-    AnimalListModule
+    AnimalListModule,
+    SharedModule
   ],
   providers: [
     AnimalListService, 
@@ -55,9 +49,7 @@ import { SheltersModule } from './shelters/shelters.module';
       multi: true
     }
   ],
-  bootstrap: [AppComponent],
-  entryComponents: [
-    AlertComponent
-  ]
+  bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

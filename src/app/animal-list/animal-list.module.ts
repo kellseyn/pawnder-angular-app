@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AnimalListComponent } from './animal-list.component';
 import { AnimalEditComponent } from './animal-edit/animal-edit.component';
 import { AnimalListRoutingModule } from './animal-list-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -14,7 +14,7 @@ import { AnimalListRoutingModule } from './animal-list-routing.module';
     ],
     imports: [
         RouterModule, 
-        CommonModule,
+        SharedModule,
         FormsModule,
         AnimalListRoutingModule
     ],

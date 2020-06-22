@@ -6,9 +6,9 @@ import { ShelterNameComponent } from './shelter-list/shelter-name/shelter-name.c
 import { ShelterStartComponent } from './shelter-start/shelter-start.component';
 import { ShelterEditComponent } from './shelter-edit/shelter-edit.component';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SheltersRoutingModule } from './shelters-routing.module'
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -21,7 +21,7 @@ import { SheltersRoutingModule } from './shelters-routing.module'
     ],
     imports: [
         RouterModule, 
-        CommonModule,
+        SharedModule,
         ReactiveFormsModule,
         SheltersRoutingModule
     ],
