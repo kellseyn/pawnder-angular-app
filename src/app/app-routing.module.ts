@@ -6,8 +6,7 @@ import {SplashComponent} from './splash/splash.component';
 import { AuthComponent } from './auth/auth.component';
 
 const appRoutes: Routes = [
-    { path: '', component: SplashComponent },
-    { path: 'auth', component: AuthComponent}
+    { path: '', component: SplashComponent }
   ];
 
 @NgModule({

@@ -14,6 +14,7 @@ import { AuthComponent } from './auth/auth.component';
 import { SheltersModule } from './shelters/shelters.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -23,18 +24,16 @@ import { CoreModule } from './core.module';
     HeaderComponent,
     FooterComponent,
     SplashComponent,
-    AuthComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     SheltersModule,
     AnimalListModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    AuthModule
   ],
   
   bootstrap: [AppComponent]
