@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, ViewChild, ElementRef, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import {Animal} from '../../shared/animal.model';
 import {AnimalListService} from '../animal-list.service';
 import { NgForm } from '@angular/forms';
