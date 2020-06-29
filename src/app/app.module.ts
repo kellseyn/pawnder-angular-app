@@ -5,13 +5,11 @@ import { AppComponent } from './app.component';
 import { ServerComponent } from './server/server.component';
 import { ServersComponent } from './servers/servers.component';
 import { HeaderComponent } from './header/header.component';
-import { AnimalListModule } from './animal-list/animal-list.module';
 import { FooterComponent } from './footer/footer.component';
 import { SplashComponent } from './splash/splash.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
-import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -26,10 +24,8 @@ import { AuthModule } from './auth/auth.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    AnimalListModule,
     SharedModule,
     CoreModule,
-    AuthModule
   ],
   
   bootstrap: [AppComponent]

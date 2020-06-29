@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AnimalListComponent } from './animal-list.component';
 import { AnimalEditComponent } from './animal-edit/animal-edit.component';
-import { AnimalListRoutingModule } from './animal-list-routing.module';
+// import { AnimalListRoutingModule } from './animal-list-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
 
@@ -13,14 +13,12 @@ import { SharedModule } from '../shared/shared.module';
         AnimalEditComponent
     ],
     imports: [
-        RouterModule, 
+        RouterModule.forChild([{ path: '', component: AnimalListComponent },
+    ]), 
         SharedModule,
-        FormsModule,
-        AnimalListRoutingModule
-    ],
-    exports: [
-        AnimalListComponent,
-        AnimalEditComponent
+        FormsModule
+        // AnimalListRoutingModule
     ]
+   
 })
 export class AnimalListModule {}
