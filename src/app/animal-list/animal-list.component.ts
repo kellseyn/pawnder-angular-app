@@ -4,6 +4,7 @@ import { Animal } from '../shared/animal.model';
 import {AnimalListService} from './animal-list.service';
 import {animate} from '@angular/animations';
 import { Subscription } from 'rxjs';
+import { LoggingService } from '../logging.service';
 
 @Component({
   selector: 'app-animal-list',
@@ -14,7 +15,7 @@ export class AnimalListComponent implements OnInit, OnDestroy {
   animals: Animal[];
   private aniChangeSub: Subscription;
 
-  constructor(private alService: AnimalListService) { }
+  constructor(private alService: AnimalListService, private loggingService: LoggingService) { }
 
   ngOnInit(){
     this.animals = this.alService.getAnimals();
@@ -24,6 +25,7 @@ export class AnimalListComponent implements OnInit, OnDestroy {
         this.animals = animals;
         }
       );
+      this.loggingService.printLog('Hello from AnimalListComponent ngOnInit');
   }
 
   onEditAnimal(index: number) {

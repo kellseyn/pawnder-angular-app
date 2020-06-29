@@ -5,6 +5,7 @@ import { AnimalListComponent } from './animal-list.component';
 import { AnimalEditComponent } from './animal-edit/animal-edit.component';
 // import { AnimalListRoutingModule } from './animal-list-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { LoggingService } from '../logging.service';
 
 
 @NgModule({
@@ -16,9 +17,10 @@ import { SharedModule } from '../shared/shared.module';
         RouterModule.forChild([{ path: '', component: AnimalListComponent },
     ]), 
         SharedModule,
-        FormsModule
-        // AnimalListRoutingModule
-    ]
+        FormsModule,
+        
+    ],
+    // providers: [LoggingService]
    
 })
 export class AnimalListModule {}
