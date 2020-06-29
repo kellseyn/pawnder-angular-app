@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import {SplashComponent} from './splash/splash.component';
 
 
@@ -12,7 +12,8 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports : [
-        RouterModule.forRoot(appRoutes)],
+        RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules })
+      ],
         exports: [RouterModule]
 })
 
