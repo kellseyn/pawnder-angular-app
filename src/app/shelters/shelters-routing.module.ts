@@ -8,7 +8,7 @@ import { ShelterDetailComponent } from './shelter-detail/shelter-detail.componen
 import {ShelterResolverService} from './shelters-resolver.service';
 
 const routes: Routes = [
-    { path: 'shelters', 
+    { path: '', 
     component: SheltersComponent, 
     canActivate: [AuthGuard], 
     children: [

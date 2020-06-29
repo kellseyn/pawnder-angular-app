@@ -5,7 +5,9 @@ import {SplashComponent} from './splash/splash.component';
 
 const appRoutes: Routes = [
     { path: '', component: SplashComponent },
-    { path: 'shelters', loadChildren: './shelters/shelters.module.ts' }
+    { path: 'shelters', loadChildren: () => import('./shelters/shelters.module').then(m => m.SheltersModule)
+    // './shelters/shelters.module.ts#SheltersModule' 
+  }
   ];
 
 @NgModule({

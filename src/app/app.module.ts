@@ -9,7 +9,6 @@ import { AnimalListModule } from './animal-list/animal-list.module';
 import { FooterComponent } from './footer/footer.component';
 import { SplashComponent } from './splash/splash.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SheltersModule } from './shelters/shelters.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
 import { AuthModule } from './auth/auth.module';
@@ -27,7 +26,6 @@ import { AuthModule } from './auth/auth.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    SheltersModule,
     AnimalListModule,
     SharedModule,
     CoreModule,
