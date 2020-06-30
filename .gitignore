@@ -46,3 +46,5 @@ testem.log
 Thumbs.db
 
 src/app/auth/auth.service.ts
+src/environments/environment.prod.ts
+src/environments/environment.ts
