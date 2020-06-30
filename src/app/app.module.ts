@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ServerComponent } from './server/server.component';
-import { ServersComponent } from './servers/servers.component';
+// import { ServersComponent } from './servers/servers.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SplashComponent } from './splash/splash.component';
@@ -16,7 +16,7 @@ import { LoggingService } from './logging.service';
   declarations: [
     AppComponent,
     ServerComponent,
-    ServersComponent,
+    // ServersComponent,
     HeaderComponent,
     FooterComponent,
     SplashComponent,
