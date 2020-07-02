@@ -29,10 +29,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onSaveData() {
     this.dataStorageService.storeShelters();
+    this.dataStorageService.storeAnimals();
   }
 
   onFetchData() {
     this.dataStorageService.fetchShelters().subscribe();
+    this.dataStorageService.fetchAnimals().subscribe();
   }
 
   onLogout() {
