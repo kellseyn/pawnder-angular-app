@@ -71,7 +71,7 @@ export class DataStorageService {
                     return animals.map(animal => {
                         return {
                             ...animal, 
-                            animals: shelter.animals ? shelter.animals : []
+                            // animals: shelter.animals ? shelter.animals : []
                         };
                     });
                 }),
