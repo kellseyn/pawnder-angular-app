@@ -8,18 +8,18 @@ export class AnimalListService {
   startedEditing = new Subject<number>();
 
   private animals: Animal[] = [
-    // new Animal(
-    //   'Houdini',
-    //   'M',
-    //   2 ,
-    //   'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/46410177/1/?bust=1572306753&width=1080' ,
-    //   'He is neutered but likes to escape'),
-    // new Animal(
-    //   'Sassy',
-    //   'F',
-    //   4,
-    //   'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47616527/1/?bust=1584192336&width=1080' ,
-    //   'Just like her name says, she is very sassy')
+    new Animal(
+      'Houdini',
+      'M',
+      2 ,
+      'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/46410177/1/?bust=1572306753&width=1080' ,
+      'He is neutered but likes to escape'),
+    new Animal(
+      'Sassy',
+      'F',
+      4,
+      'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47616527/1/?bust=1584192336&width=1080' ,
+      'Just like her name says, she is very sassy')
   ];
 
   constructor(private alService: AnimalListService){}
@@ -43,11 +43,11 @@ export class AnimalListService {
   }
 
   addAnimals(animals: Animal[]) {
-    // for (let animal of animals){
-    //   this.addAnimal(animal);
-    // }
-    this.animals.push(...animals);
-    this.animalsChanged.next(this.animals.slice());
+    for (let animal of animals){
+      this.addAnimal(animal);
+    }
+    // this.animals.push(...animals);
+    // this.animalsChanged.next(this.animals.slice());
 
   }
 
