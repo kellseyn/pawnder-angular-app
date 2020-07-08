@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onFetchData() {
     this.dataStorageService.fetchShelters().subscribe();
-    this.dataStorageService.fetchAnimals().subscribe();
+    // this.dataStorageService.fetchAnimals().subscribe();
   }
 
   onLogout() {
