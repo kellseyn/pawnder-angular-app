@@ -67,22 +67,23 @@ export class DataStorageService {
             <Animal[]>
             (
                 'https://pawnder-angular-app.firebaseio.com/animals.json?'
-            ).subscribe(response => {
-                console.log(response);
-            });
-            // .pipe(
-            //     map(animals => {
-            //         return animals.map(animal => {
-            //             return {
-            //                 ...animal, 
-            //                 // animals: shelter.animals ? shelter.animals : []
-            //             };
-            //         });
-            //     }),
-            //     tap(animals => {
-            //         this.alService.setAnimals(animals);        
+            )
+            // .subscribe(response => {
+            //     console.log(response);
+            // });
+            .pipe(
+                map(animals => {
+                    return animals.map(animal => {
+                        return {
+                            ...animal, 
+                            // animals: shelter.animals ? shelter.animals : []
+                        };
+                    });
+                }),
+                tap(animals => {
+                    this.alService.setAnimals(animals);        
 
-            //     })
-            // );
+                })
+            );
     }
 }
