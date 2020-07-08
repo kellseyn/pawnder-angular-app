@@ -5,7 +5,7 @@ import { Shelter } from '../shelters/shelter.model';
 import { AnimalListService} from '../animal-list/animal-list.service';
 import { ShelterService } from '../shelters/shelter.service';
 import { AuthService } from '../auth/auth.service';
-import { Animal } from './animal.model';
+import { Animal } from '../shared/animal.model';
 
 
 @Injectable({providedIn: 'root'})
@@ -63,22 +63,26 @@ export class DataStorageService {
 
     fetchAnimals() {
             return this.http
-            .get<Animal[]>(
-                'https://pawnder-angular-app.firebaseio.com/animals.json?',
-            )
-            .pipe(
-                map(animals => {
-                    return animals.map(animal => {
-                        return {
-                            ...animal, 
-                            // animals: shelter.animals ? shelter.animals : []
-                        };
-                    });
-                }),
-                tap(animals => {
-                    this.alService.setAnimals(animals);        
+            .get
+            <Animal[]>
+            (
+                'https://pawnder-angular-app.firebaseio.com/animals.json?'
+            ).subscribe(response => {
+                console.log(response);
+            });
+            // .pipe(
+            //     map(animals => {
+            //         return animals.map(animal => {
+            //             return {
+            //                 ...animal, 
+            //                 // animals: shelter.animals ? shelter.animals : []
+            //             };
+            //         });
+            //     }),
+            //     tap(animals => {
+            //         this.alService.setAnimals(animals);        
 
-                })
-            );
+            //     })
+            // );
     }
 }
