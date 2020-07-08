@@ -22,7 +22,7 @@ export class AnimalListService {
     //   'Just like her name says, she is very sassy')
   ];
 
-  constructor(private alService: AnimalListService){}
+  constructor(){}
 
   setAnimals(animals: Animal[]){
     this.animals = animals;
