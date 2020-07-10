@@ -58,7 +58,6 @@ export class AnimalEditComponent implements OnInit, OnDestroy {
   onDelete() {
     this.alService.deleteAnimal(this.editedAnimalIndex);
     this.onClear();
-    // this.editMode = false;
   }
 
   ngOnDestroy() {
