@@ -5,6 +5,8 @@ import { Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { AlertComponent } from '../shared/alert/alert.component';
 import { PlaceholderDirective } from '../shared/placeholder/placeholder.directive';
+import { DataStorageService } from '../shared/data-storage.service';
+
 
 @Component({
     selector: 'app-auth',
@@ -18,7 +20,11 @@ export class AuthComponent implements OnDestroy{
 
     private closeSub: Subscription;
 
-    constructor(private authService: AuthService, private router: Router, private componentFactoryResolver: ComponentFactoryResolver) {
+    constructor(
+        private authService: AuthService, 
+        private router: Router, 
+        private componentFactoryResolver: ComponentFactoryResolver, 
+        private dataStorageService: DataStorageService) {
 
     }
 
@@ -87,4 +93,8 @@ export class AuthComponent implements OnDestroy{
             hostViewContainerRef.clear();
         });
     }
+
+    onFetchShelters() {
+        this.dataStorageService.fetchShelters().subscribe();
+  }
 }
