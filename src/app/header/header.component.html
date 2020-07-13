@@ -6,10 +6,10 @@
     <div class="navbar-default">
       <ul class="nav navbar-nav">
         <li routerLinkActive="active" *ngIf="isAuthenticated">
-          <a routerLink="/shelters">Shelters</a>
+          <a role="button" (click)="onFetchShelters()"  routerLink="/shelters">Shelters</a>
         </li>
         <li routerLinkActive="active" *ngIf="isAuthenticated">
-          <a routerLink="/animal-list">Animals</a>
+          <a role="button" (click)="onFetchAnimals()" routerLink="/animal-list">Animals</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -19,12 +19,12 @@
             <li>
               <a style="cursor: pointer;" (click)="onSaveData()">Save Data</a>
             </li>
-            <li>
+            <!-- <li>
               <a style="cursor: pointer;" (click)="onFetchShelters()">Fetch Shelters</a>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
               <a style="cursor: pointer;" (click)="onFetchAnimals()">Fetch Animals</a>
-            </li>
+            </li> -->
           </ul>
         </li>
         <li routerLinkActive="active" *ngIf="!isAuthenticated">

@@ -1,6 +1,5 @@
-import { Action } from '@ngrx/store';
 import { Animal } from '../../shared/animal.model';
-import { ADD_ANIMAL } from './animal-list.actions';
+import * as AnimalListActions from './animal-list.actions';
 
 const initialState = {
     animals: [
@@ -8,12 +7,12 @@ const initialState = {
     ]
 };
 
-export function animalListReducer(state = initialState, action: Action) {
+export function animalListReducer(state = initialState, action: AnimalListActions.AddAnimal) {
     switch(action.type) {
-        case ADD_ANIMAL: 
+        case AnimalListActions.ADD_ANIMAL: 
             return {
                 ...state,
-                animals: [...state.animals, action]
+                animals: [...state.animals, action.payload]
             };
     }
 }
