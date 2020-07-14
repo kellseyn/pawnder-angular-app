@@ -5,34 +5,21 @@
     </div>
     <div class="navbar-default">
       <ul class="nav navbar-nav">
+        <!-- Shelters Tab -->
         <li routerLinkActive="active" *ngIf="isAuthenticated">
           <a role="button" (click)="onFetchShelters()"  routerLink="/shelters">Shelters</a>
         </li>
+        <!-- Animals Tab -->
         <li routerLinkActive="active" *ngIf="isAuthenticated">
           <a role="button" (click)="onFetchAnimals()" routerLink="/animal-list">Animals</a>
         </li>
       </ul>
-      <ul class="">
-        <!-- <div class="sm-form ">
-          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-        </div> -->
-        <!-- <div class="input-group input-group-sm">
-          <div class="input-group-prepend">
-             <span class="input-group-text">@</span> -->
-          <!-- </div>
-          <input type="text" class="form-control fix-rounded-right" >
-        
-        </div> -->
-
-        <div class="col-md-5 pl-0 pr-0">
-
-          <form class="form-inline  " *ngIf="isAuthenticated">
-            <input class="form-control " type="text" placeholder="Search" aria-label="Search">
+        <div class="col-md-5 searchbar-area">
+          <form class="form-inline" *ngIf="isAuthenticated">
+            <input class="form-control " type="text" placeholder="Search for Shelter" aria-label="Search">
             <button class="btn btn-indigo btn-rounded btn-sm my-0 waves-effect waves-light" type="submit">Search</button>
           </form>
-  
         </div>
-      </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" appDropdown *ngIf="isAuthenticated">
           <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
@@ -40,12 +27,6 @@
             <li>
               <a style="cursor: pointer;" (click)="onSaveData()">Save Data</a>
             </li>
-            <!-- <li>
-              <a style="cursor: pointer;" (click)="onFetchShelters()">Fetch Shelters</a>
-            </li> -->
-            <!-- <li>
-              <a style="cursor: pointer;" (click)="onFetchAnimals()">Fetch Animals</a>
-            </li> -->
           </ul>
         </li>
         <li routerLinkActive="active" *ngIf="!isAuthenticated">
