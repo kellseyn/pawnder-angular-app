@@ -14,6 +14,7 @@
           <a role="button" (click)="onFetchAnimals()" routerLink="/animal-list">Animals</a>
         </li>
       </ul>
+        <!-- Search Bar -->
         <div class="col-md-5 searchbar-area">
           <form class="form-inline" *ngIf="isAuthenticated">
             <input class="form-control " type="text" placeholder="Search for Shelter" aria-label="Search">
@@ -21,6 +22,7 @@
           </form>
         </div>
       <ul class="nav navbar-nav navbar-right">
+        <!-- Save Data tab  -->
         <li class="dropdown" appDropdown *ngIf="isAuthenticated">
           <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -29,6 +31,7 @@
             </li>
           </ul>
         </li>
+        <!-- Login/Logout  -->
         <li routerLinkActive="active" *ngIf="!isAuthenticated">
           <a routerLink="/auth">Login</a>
         </li>
