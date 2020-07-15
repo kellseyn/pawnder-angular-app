@@ -9,7 +9,8 @@ const initialState = {
 
 export function animalListReducer(
     state = initialState, 
-    action: AnimalListActions.AddAnimal) {
+    action: AnimalListActions.AddAnimal
+    ) {
     switch(action.type) {
         case AnimalListActions.ADD_ANIMAL: 
             return {
@@ -17,5 +18,6 @@ export function animalListReducer(
                 animals: [...state.animals, action.payload]
             };
         default:
+            return state;
     }
 }

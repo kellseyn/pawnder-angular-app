@@ -3,6 +3,8 @@ import {Animal} from '../../shared/animal.model';
 import {AnimalListService} from '../animal-list.service';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as AnimalListActions from '../store/animal-list.actions';
 
 @Component({
   selector: 'app-animal-edit',
@@ -16,7 +18,9 @@ export class AnimalEditComponent implements OnInit, OnDestroy {
   editedAnimalIndex: number;
   editedAnimal: Animal;
 
-  constructor(private alService: AnimalListService) { }
+  constructor(
+    private alService: AnimalListService, 
+    private store: Store<{animalList: { animals: Animal[] } }>) { }
 
   ngOnInit() {
     this.subscription = this.alService.startedEditing
@@ -44,7 +48,8 @@ export class AnimalEditComponent implements OnInit, OnDestroy {
     if (this.editMode) {
       this.alService.updateAnimal(this.editedAnimalIndex, newAnimal);
     } else {
-      this.alService.addAnimal(newAnimal);
+      // this.alService.addAnimal(newAnimal);
+      this.store.dispatch(new AnimalListActions.AddAnimal(newAnimal));
     }
     this.editMode = false;
     form.reset();

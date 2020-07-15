@@ -5,5 +5,6 @@ export const ADD_ANIMAL = 'ADD_ANIMAL';
 
 export class AddAnimal implements Action {
     readonly type = ADD_ANIMAL;
-    payload: Animal;
+
+    constructor(public payload: Animal) {}
 }
