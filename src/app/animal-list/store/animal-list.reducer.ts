@@ -22,6 +22,7 @@ export function animalListReducer(
                 ...state,
                 animals: [...state.animals, ...action.payload]
             };
+            
         default:
             return state;
     }
