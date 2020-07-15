@@ -6,7 +6,7 @@
       <a
         class="list-group-item"
         style="cursor: pointer"
-      *ngFor="let animal of animals; let i = index"
+      *ngFor="let animal of (animals | async).animals; let i = index"
       (click)="onEditAnimal(i)">
         {{  animal.name }},
         {{  animal.gender }},

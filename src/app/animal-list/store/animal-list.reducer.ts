@@ -7,12 +7,15 @@ const initialState = {
     ]
 };
 
-export function animalListReducer(state = initialState, action: AnimalListActions.AddAnimal) {
+export function animalListReducer(
+    state = initialState, 
+    action: AnimalListActions.AddAnimal) {
     switch(action.type) {
         case AnimalListActions.ADD_ANIMAL: 
             return {
                 ...state,
                 animals: [...state.animals, action.payload]
             };
+        default:
     }
 }

@@ -3,8 +3,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Animal } from '../shared/animal.model';
 import {AnimalListService} from './animal-list.service';
 import {animate} from '@angular/animations';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { LoggingService } from '../logging.service';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-animal-list',
@@ -12,19 +13,24 @@ import { LoggingService } from '../logging.service';
   styleUrls: ['./animal-list.component.css']
 })
 export class AnimalListComponent implements OnInit, OnDestroy {
-  animals: Animal[];
+  animals: Observable<{animals: Animal[]}>;
   private aniChangeSub: Subscription;
 
-  constructor(private alService: AnimalListService, private loggingService: LoggingService) { }
+  constructor(
+    private alService: AnimalListService, 
+    private loggingService: LoggingService,
+    private store: Store<{animalList: {animals: Animal[] } }>
+    ) { }
 
   ngOnInit(){
-    this.animals = this.alService.getAnimals();
-    this.aniChangeSub = this.alService.animalsChanged
-      .subscribe(
-        (animals: Animal[]) => {
-        this.animals = animals;
-        }
-      );
+    this.animals = this.store.select('animalList');
+    // this.animals = this.alService.getAnimals();
+    // this.aniChangeSub = this.alService.animalsChanged
+    //   .subscribe(
+    //     (animals: Animal[]) => {
+    //     this.animals = animals;
+    //     }
+    //   );
       this.loggingService.printLog('Hello from AnimalListComponent ngOnInit');
   }
 
@@ -33,7 +39,7 @@ export class AnimalListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.aniChangeSub.unsubscribe;
+    // this.aniChangeSub.unsubscribe;
   }
 
 
