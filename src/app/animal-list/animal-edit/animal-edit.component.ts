@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as AnimalListActions from '../store/animal-list.actions';
+import * as fromAnimalList from '../store/animal-list.reducer';
 
 @Component({
   selector: 'app-animal-edit',
@@ -20,7 +21,7 @@ export class AnimalEditComponent implements OnInit, OnDestroy {
 
   constructor(
     private alService: AnimalListService, 
-    private store: Store<{animalList: { animals: Animal[] } }>) { }
+    private store: Store<fromAnimalList.AppState>) { }
 
   ngOnInit() {
     this.subscription = this.alService.startedEditing
@@ -46,7 +47,13 @@ export class AnimalEditComponent implements OnInit, OnDestroy {
     const value = form.value;
     const newAnimal = new Animal(value.name, value.gender, value.age, value.imgPath, value.bio);
     if (this.editMode) {
-      this.alService.updateAnimal(this.editedAnimalIndex, newAnimal);
+      // this.alService.updateAnimal(this.editedAnimalIndex, newAnimal);
+      this.store.dispatch(
+        new AnimalListActions.UpdateAnimal({
+          index: this.editedAnimalIndex, 
+          animal: newAnimal
+        })
+      );
     } else {
       // this.alService.addAnimal(newAnimal);
       this.store.dispatch(new AnimalListActions.AddAnimal(newAnimal));
@@ -61,7 +68,10 @@ export class AnimalEditComponent implements OnInit, OnDestroy {
   }
 
   onDelete() {
-    this.alService.deleteAnimal(this.editedAnimalIndex);
+    // this.alService.deleteAnimal(this.editedAnimalIndex);
+    this.store.dispatch(
+      new AnimalListActions.DeleteAnimal(this.editedAnimalIndex)
+    );
     this.onClear();
   }
 

@@ -1,14 +1,25 @@
 import { Animal } from '../../shared/animal.model';
 import * as AnimalListActions from './animal-list.actions';
 
+
+export interface State {
+    animals: Animal[];
+    editedAnimal: Animal;
+    editedAnimalIndex: number;
+}
+
+export interface AppState {
+    animalList: State;
+}
+
 const initialState = {
-    animals: [
-        new Animal('Pocky', 'M', 4, 'https://cdn.discordapp.com/attachments/583439033737412625/731160511525158932/IMG_20200710_094936.jpg', 'Living my best life with my parents, not for adoption, just attention.')
-    ]
+    animals: [new Animal('Pocky', 'M', 4, 'https://cdn.discordapp.com/attachments/583439033737412625/731160511525158932/IMG_20200710_094936.jpg', 'Living my best life with my parents, not for adoption, just attention.')],
+    editedAnimal: null,
+    editedAnimalIndex: -1
 };
 
 export function animalListReducer(
-    state = initialState, 
+    state: State = initialState, 
     action: AnimalListActions.AnimalListActions
     ) {
     switch(action.type) {
@@ -22,7 +33,28 @@ export function animalListReducer(
                 ...state,
                 animals: [...state.animals, ...action.payload]
             };
-            
+
+        case AnimalListActions.UPDATE_ANIMAL:
+            const animal = state.animals[action.payload.index];
+            const updatedAnimal = {
+                ...animal,
+                ...action.payload.animal
+            };
+            const updatedAnimals = [...state.animals];
+            updatedAnimals[action.payload.index] = updatedAnimal;
+
+            return {
+                ...state,
+                animals: updatedAnimals
+            };
+
+        case AnimalListActions.DELETE_ANIMAL:
+            return {
+                ...state,
+                animals: state.animals.filter((ani, aniIndex) => {
+                    return aniIndex !== action.payload;
+                })
+            };
         default:
             return state;
     }

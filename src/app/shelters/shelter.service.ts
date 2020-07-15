@@ -5,6 +5,7 @@ import { AnimalListService } from '../animal-list/animal-list.service';
 import { Subject } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as AnimalListActions from '../animal-list/store/animal-list.actions';
+import * as fromAnimalList from '../animal-list/store/animal-list.reducer';
 
 @Injectable()
 export class ShelterService {
@@ -15,7 +16,7 @@ export class ShelterService {
 
   constructor(
     private alService: AnimalListService, 
-    private store: Store<{animalList: {animals: Animal[] } }>
+    private store: Store<fromAnimalList.AppState>
     ) {}
 
   setShelters(shelters: Shelter[]) {
