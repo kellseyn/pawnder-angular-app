@@ -9,13 +9,18 @@ const initialState = {
 
 export function animalListReducer(
     state = initialState, 
-    action: AnimalListActions.AddAnimal
+    action: AnimalListActions.AnimalListActions
     ) {
     switch(action.type) {
         case AnimalListActions.ADD_ANIMAL: 
             return {
                 ...state,
                 animals: [...state.animals, action.payload]
+            };
+        case AnimalListActions.ADD_ANIMALS:
+            return {
+                ...state,
+                animals: [...state.animals, ...action.payload]
             };
         default:
             return state;

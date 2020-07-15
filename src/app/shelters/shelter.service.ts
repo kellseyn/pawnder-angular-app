@@ -3,6 +3,8 @@ import { Injectable} from '@angular/core';
 import { Animal} from '../shared/animal.model';
 import { AnimalListService } from '../animal-list/animal-list.service';
 import { Subject } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as AnimalListActions from '../animal-list/store/animal-list.actions';
 
 @Injectable()
 export class ShelterService {
@@ -11,7 +13,10 @@ export class ShelterService {
 
   private shelters: Shelter[] = [];
 
-  constructor(private alService: AnimalListService) {}
+  constructor(
+    private alService: AnimalListService, 
+    private store: Store<{animalList: {animals: Animal[] } }>
+    ) {}
 
   setShelters(shelters: Shelter[]) {
     this.shelters = shelters;
@@ -27,7 +32,8 @@ export class ShelterService {
   }
 
   addAnimalsToAnimalList(animals: Animal[]) {
-    this.alService.addAnimals(animals);
+    // this.alService.addAnimals(animals);
+    this.store.dispatch(new AnimalListActions.AddAnimals(animals));
   }
 
   addShelter(shelter: Shelter) {
