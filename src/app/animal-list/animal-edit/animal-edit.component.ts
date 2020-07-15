@@ -4,8 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as AnimalListActions from '../store/animal-list.actions';
-import * as fromAnimalList from '../store/animal-list.reducer';
-
+import * as fromApp from '../../store/app.reducer';
 @Component({
   selector: 'app-animal-edit',
   templateUrl: './animal-edit.component.html',
@@ -17,7 +16,7 @@ export class AnimalEditComponent implements OnInit, OnDestroy {
   editMode = false;
   editedAnimal: Animal;
 
-  constructor(private store: Store<fromAnimalList.AppState>) { }
+  constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
     this.subscription = this.store.select('animalList').subscribe(stateData => {

@@ -9,12 +9,11 @@ import { SplashComponent } from './splash/splash.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
-import { animalListReducer } from './animal-list/store/animal-list.reducer';
+import * as fromApp from './store/app.reducer';
 
 @NgModule({
   declarations: [
     AppComponent,
-   
     HeaderComponent,
     FooterComponent,
     SplashComponent,
@@ -23,7 +22,7 @@ import { animalListReducer } from './animal-list/store/animal-list.reducer';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    StoreModule.forRoot({animalList: animalListReducer}),
+    StoreModule.forRoot(fromApp.appReducer),
     SharedModule,
     CoreModule,
   ],

@@ -5,8 +5,8 @@ import {animate} from '@angular/animations';
 import { Subscription, Observable } from 'rxjs';
 import { LoggingService } from '../logging.service';
 import { Store } from '@ngrx/store';
-import * as fromAnimalList from './store/animal-list.reducer';
 import * as AnimalListActions from './store/animal-list.actions';
+import * as fromApp from '../store/app.reducer';
 
 @Component({
   selector: 'app-animal-list',
@@ -19,7 +19,7 @@ export class AnimalListComponent implements OnInit, OnDestroy {
 
   constructor(
     private loggingService: LoggingService,
-    private store: Store<fromAnimalList.AppState>
+    private store: Store<fromApp.AppState>
     ) { }
 
   ngOnInit(){

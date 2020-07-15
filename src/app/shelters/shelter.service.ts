@@ -4,7 +4,7 @@ import { Animal} from '../shared/animal.model';
 import { Subject } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as AnimalListActions from '../animal-list/store/animal-list.actions';
-import * as fromAnimalList from '../animal-list/store/animal-list.reducer';
+import * as fromApp from '../store/app.reducer';
 
 @Injectable()
 export class ShelterService {
@@ -14,7 +14,7 @@ export class ShelterService {
   private shelters: Shelter[] = [];
 
   constructor(
-    private store: Store<fromAnimalList.AppState>
+    private store: Store<fromApp.AppState>
     ) {}
 
   setShelters(shelters: Shelter[]) {
