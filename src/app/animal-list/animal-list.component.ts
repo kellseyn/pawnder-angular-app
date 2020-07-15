@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Animal } from '../shared/animal.model';
-import {AnimalListService} from './animal-list.service';
 import {animate} from '@angular/animations';
 import { Subscription, Observable } from 'rxjs';
 import { LoggingService } from '../logging.service';
@@ -19,7 +18,6 @@ export class AnimalListComponent implements OnInit, OnDestroy {
   private aniChangeSub: Subscription;
 
   constructor(
-    private alService: AnimalListService, 
     private loggingService: LoggingService,
     private store: Store<fromAnimalList.AppState>
     ) { }

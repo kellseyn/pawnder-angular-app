@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import {Animal} from '../../shared/animal.model';
-import {AnimalListService} from '../animal-list.service';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -18,9 +17,7 @@ export class AnimalEditComponent implements OnInit, OnDestroy {
   editMode = false;
   editedAnimal: Animal;
 
-  constructor(
-    private alService: AnimalListService, 
-    private store: Store<fromAnimalList.AppState>) { }
+  constructor(private store: Store<fromAnimalList.AppState>) { }
 
   ngOnInit() {
     this.subscription = this.store.select('animalList').subscribe(stateData => {
