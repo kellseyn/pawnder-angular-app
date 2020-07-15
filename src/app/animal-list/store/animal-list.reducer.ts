@@ -55,6 +55,19 @@ export function animalListReducer(
                     return aniIndex !== action.payload;
                 })
             };
+        case AnimalListActions.START_EDIT:
+            return {
+                ...state,
+                editedAnimalIndex: action.payload,
+                editedAnimal: {...state.animals[action.payload]}
+            };
+
+        case AnimalListActions.STOP_EDIT:
+            return {
+                ...state,
+                editedAnimal: null,
+                editedAnimalIndex: -1
+            }
         default:
             return state;
     }

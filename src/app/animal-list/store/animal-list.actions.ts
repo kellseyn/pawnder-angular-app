@@ -5,6 +5,8 @@ export const ADD_ANIMAL = 'ADD_ANIMAL';
 export const ADD_ANIMALS = 'ADD_ANIMALS';
 export const UPDATE_ANIMAL = 'UPDATE_ANIMAL';
 export const DELETE_ANIMAL = 'DELETE_ANIMAL';
+export const START_EDIT = 'START_EDIT';
+export const STOP_EDIT = 'STOP_EDIT';
 
 export class AddAnimal implements Action {
     readonly type = ADD_ANIMAL;
@@ -31,4 +33,14 @@ export class DeleteAnimal implements Action {
     constructor(public payload: number) {}
 }
 
-export type AnimalListActions = AddAnimal | AddAnimals | UpdateAnimal | DeleteAnimal;
+export class StartEdit implements Action {
+    readonly type = START_EDIT;
+
+    constructor(public payload: number) {}
+}
+
+export class StopEdit implements Action {
+    readonly type = STOP_EDIT;
+}
+
+export type AnimalListActions = AddAnimal | AddAnimals | UpdateAnimal | DeleteAnimal | StartEdit | StopEdit;

@@ -24,23 +24,21 @@ export class AnimalEditComponent implements OnInit, OnDestroy {
     private store: Store<fromAnimalList.AppState>) { }
 
   ngOnInit() {
-    this.subscription = this.alService.startedEditing
-      .subscribe(
-        (index: number) => {
-          this.editedAnimalIndex = index;
-          this.editMode = true;
-          this.editedAnimal = this.alService.getAnimal(index);
-          this.alForm.setValue({
-            name: this.editedAnimal.name,
-            gender: this.editedAnimal.gender,
-            age: this.editedAnimal.age,
-            imgPath: this.editedAnimal.imgPath,
-            bio: this.editedAnimal.bio,
-            
-
-          })
-        }
-      );
+    this.subscription = this.store.select('animalList').subscribe(stateData => {
+      if (stateData.editedAnimalIndex > -1) {
+        this.editMode = true;
+        this.editedAnimal = stateData.editedAnimal;
+        this.alForm.setValue({
+          name: this.editedAnimal.name,
+          gender: this.editedAnimal.gender,
+          age: this.editedAnimal.age,
+          imgPath: this.editedAnimal.imgPath,
+          bio: this.editedAnimal.bio,
+        });
+      } else {
+        this.editMode = false;
+      }
+    });
   }
 
   onAddAnimal(form: NgForm) {
@@ -65,6 +63,7 @@ export class AnimalEditComponent implements OnInit, OnDestroy {
   onClear() {
     this.alForm.reset();
     this.editMode = false;
+    this.store.dispatch(new AnimalListActions.StopEdit());
   }
 
   onDelete() {
@@ -77,5 +76,6 @@ export class AnimalEditComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.store.dispatch(new AnimalListActions.StopEdit());
   }
 }

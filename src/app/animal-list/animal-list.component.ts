@@ -7,6 +7,7 @@ import { Subscription, Observable } from 'rxjs';
 import { LoggingService } from '../logging.service';
 import { Store } from '@ngrx/store';
 import * as fromAnimalList from './store/animal-list.reducer';
+import * as AnimalListActions from './store/animal-list.actions';
 
 @Component({
   selector: 'app-animal-list',
@@ -36,7 +37,8 @@ export class AnimalListComponent implements OnInit, OnDestroy {
   }
 
   onEditAnimal(index: number) {
-    this.alService.startedEditing.next(index);
+    // this.alService.startedEditing.next(index);
+    this.store.dispatch(new AnimalListActions.StartEdit(index));
   }
 
   ngOnDestroy(): void {
