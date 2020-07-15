@@ -1,12 +1,12 @@
 import { Action } from '@ngrx/store';
 import { Animal } from '../../shared/animal.model';
 
-export const ADD_ANIMAL = 'ADD_ANIMAL';
-export const ADD_ANIMALS = 'ADD_ANIMALS';
-export const UPDATE_ANIMAL = 'UPDATE_ANIMAL';
-export const DELETE_ANIMAL = 'DELETE_ANIMAL';
-export const START_EDIT = 'START_EDIT';
-export const STOP_EDIT = 'STOP_EDIT';
+export const ADD_ANIMAL = '[Animal List] Add Animal';
+export const ADD_ANIMALS = '[Animal List] Add Animals';
+export const UPDATE_ANIMAL = '[Animal List] Update Animal';
+export const DELETE_ANIMAL = '[Animal List] Delete Animal';
+export const START_EDIT = '[Animal List] Start Edit';
+export const STOP_EDIT = '[Animal List] Stop Edit';
 
 export class AddAnimal implements Action {
     readonly type = ADD_ANIMAL;
