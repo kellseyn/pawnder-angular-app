@@ -35,25 +35,29 @@ export function animalListReducer(
             };
 
         case AnimalListActions.UPDATE_ANIMAL:
-            const animal = state.animals[action.payload.index];
+            const animal = state.animals[state.editedAnimalIndex];
             const updatedAnimal = {
                 ...animal,
-                ...action.payload.animal
+                ...action.payload
             };
             const updatedAnimals = [...state.animals];
-            updatedAnimals[action.payload.index] = updatedAnimal;
+            updatedAnimals[state.editedAnimalIndex] = updatedAnimal;
 
             return {
                 ...state,
-                animals: updatedAnimals
+                animals: updatedAnimals,
+                editedAnimalIndex: -1,
+                editedAnimal: null
             };
 
         case AnimalListActions.DELETE_ANIMAL:
             return {
                 ...state,
                 animals: state.animals.filter((ani, aniIndex) => {
-                    return aniIndex !== action.payload;
-                })
+                    return aniIndex !== state.editedAnimalIndex;
+                }),
+                editedAnimalIndex: -1,
+                editedAnimal: null
             };
         case AnimalListActions.START_EDIT:
             return {

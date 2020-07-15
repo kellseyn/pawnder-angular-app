@@ -24,13 +24,11 @@ export class AddAnimals implements Action {
 export class UpdateAnimal implements Action {
     readonly type = UPDATE_ANIMAL;
 
-    constructor(public payload: {index: number, animal: Animal}) {}
+    constructor(public payload: Animal) {}
 }
 
 export class DeleteAnimal implements Action {
     readonly type = DELETE_ANIMAL;
-
-    constructor(public payload: number) {}
 }
 
 export class StartEdit implements Action {

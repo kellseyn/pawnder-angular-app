@@ -16,7 +16,6 @@ export class AnimalEditComponent implements OnInit, OnDestroy {
   @ViewChild('f') alForm: NgForm;
   subscription: Subscription;
   editMode = false;
-  editedAnimalIndex: number;
   editedAnimal: Animal;
 
   constructor(
@@ -47,10 +46,7 @@ export class AnimalEditComponent implements OnInit, OnDestroy {
     if (this.editMode) {
       // this.alService.updateAnimal(this.editedAnimalIndex, newAnimal);
       this.store.dispatch(
-        new AnimalListActions.UpdateAnimal({
-          index: this.editedAnimalIndex, 
-          animal: newAnimal
-        })
+        new AnimalListActions.UpdateAnimal(newAnimal)
       );
     } else {
       // this.alService.addAnimal(newAnimal);
@@ -69,7 +65,7 @@ export class AnimalEditComponent implements OnInit, OnDestroy {
   onDelete() {
     // this.alService.deleteAnimal(this.editedAnimalIndex);
     this.store.dispatch(
-      new AnimalListActions.DeleteAnimal(this.editedAnimalIndex)
+      new AnimalListActions.DeleteAnimal()
     );
     this.onClear();
   }
