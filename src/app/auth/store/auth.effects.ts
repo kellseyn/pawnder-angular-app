@@ -65,7 +65,7 @@ export class AuthEffects {
         })
     );
 
-    @Effect()
+    @Effect({ dispatch: false })
     authSuccess = this.actions$.pipe(
         ofType(AuthActions.LOGIN), 
         tap(() => {
