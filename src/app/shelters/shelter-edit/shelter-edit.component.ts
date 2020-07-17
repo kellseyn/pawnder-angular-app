@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
-import { ShelterService } from '../shelter.service';
-import { Shelter } from '../shelter.model';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../store/app.reducer';
 import { map } from 'rxjs/operators';
@@ -22,7 +20,6 @@ export class ShelterEditComponent implements OnInit, OnDestroy {
   private storeSub: Subscription;
 
   constructor(private route: ActivatedRoute,
-              private shelterService: ShelterService,
               private router: Router,
               private store: Store<fromApp.AppState>) { }
 
@@ -38,15 +35,7 @@ export class ShelterEditComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-      // const newShelter = new Shelter(
-      //   this.shelterForm.value['name'],
-      //   this.shelterForm.value['location'],
-      //   this.shelterForm.value['phoneNumber'],
-      //   this.shelterForm.value['imagePath'],
-      //   this.shelterForm.value['animals']);
-
       if (this.editMode) {
-        // this.shelterService.updateShelter(this.id, this.shelterForm.value);
         this.store.dispatch(
           new SheltersActions.UpdateShelter({
             index: this.id, 
@@ -54,7 +43,6 @@ export class ShelterEditComponent implements OnInit, OnDestroy {
           })
         );
       } else {
-        // this.shelterService.addShelter(this.shelterForm.value);
         this.store.dispatch(new SheltersActions.AddShelter(this.shelterForm.value))
       }
       this.onCancel();
@@ -97,7 +85,6 @@ export class ShelterEditComponent implements OnInit, OnDestroy {
 
 
     if (this.editMode) {
-      // const shelter = this.shelterService.getShelter(this.id);
       this.storeSub = this.store.select('shelters').pipe(map(shelterState => {
         return shelterState.shelters.find((shelter, index) => {
           return index === this.id;

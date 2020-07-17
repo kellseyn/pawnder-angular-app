@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {  Shelter } from '../shelter.model';
-import {ShelterService} from '../shelter.service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../store/app.reducer';
 import { map, switchMap } from 'rxjs/operators';
 import * as SheltersActions from '../store/shelter.actions';
+import * as AnimalListActions from '../../animal-list/store/animal-list.actions';
 
 @Component({
   selector: 'app-shelter-detail',
@@ -16,8 +16,7 @@ export class ShelterDetailComponent implements OnInit {
   shelter: Shelter;
   id: number;
 
-  constructor(private shelterService: ShelterService,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
               private router: Router,
               private store: Store<fromApp.AppState>) { }
 
@@ -41,7 +40,7 @@ export class ShelterDetailComponent implements OnInit {
   }
 
   onAddToAnimalList() {
-    this.shelterService.addAnimalsToAnimalList(this.shelter.animals);
+    this.store.dispatch(new AnimalListActions.AddAnimals(this.shelter.animals));
   }
 
   onEditShelter(){
@@ -49,7 +48,6 @@ export class ShelterDetailComponent implements OnInit {
   }
 
   onDeleteShelter() {
-    // this.shelterService.deleteShelter(this.id);
     this.store.dispatch(new SheltersActions.DeleteShelter(this.id));
     this.router.navigate(['/shelters']);
   }
