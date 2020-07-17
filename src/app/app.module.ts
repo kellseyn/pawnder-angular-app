@@ -15,6 +15,7 @@ import { CoreModule } from './core.module';
 import * as fromApp from './store/app.reducer';
 import { AuthEffects } from './auth/store/auth.effects';
 import { environment } from 'src/environments/environment';
+import { ShelterEffects } from './shelters/store/shelter.effects';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { environment } from 'src/environments/environment';
     HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, ShelterEffects]),
     StoreDevtoolsModule.instrument({logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
     SharedModule,

@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../store/app.reducer';
 import * as AuthActions from '../auth/store/auth.actions';
+import * as ShelterActions from '../shelters/store/shelter.actions';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -41,7 +42,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onFetchShelters() {
-    this.dataStorageService.fetchShelters().subscribe();
+    // this.dataStorageService.fetchShelters().subscribe();
+    this.store.dispatch(new ShelterActions.FetchShelters());
   }
 
   onFetchAnimals() {

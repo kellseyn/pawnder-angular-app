@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Shelter } from './shelter.model';
-import { DataStorageService } from '../shared/data-storage.service';
-import { ShelterService } from './shelter.service';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../store/app.reducer';
+import * as SheltersActions from '../shelters/store/shelter.actions';
+import { Actions, ofType } from '@ngrx/effects';
+import { take } from 'rxjs/operators';
 
 
 @Injectable({providedIn: 'root'})
 export class ShelterResolverService implements Resolve<Shelter[]> {
-    constructor(private dataStorageService: DataStorageService, private shelterService: ShelterService) {}
+    constructor(private store: Store<fromApp.AppState>, private actions$: Actions) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        const shelters = this.shelterService.getShelters();
-        if (shelters.length === 0) {
-            return this.dataStorageService.fetchShelters();
-
-        } else {
-            return shelters;
-        }
+        this.store.dispatch(new SheltersActions.FetchShelters());
+        return this.actions$.pipe(
+            ofType(SheltersActions.SET_SHELTERS), 
+            take(1));
     }
 }
