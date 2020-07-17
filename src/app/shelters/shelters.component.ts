@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {ShelterService} from './shelter.service';
 
 @Component({
   selector: 'app-shelters',
