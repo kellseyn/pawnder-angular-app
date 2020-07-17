@@ -3,6 +3,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { ShelterService } from '../shelter.service';
 import { Shelter } from '../shelter.model';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../../store/app.reducer';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-shelter-edit',
@@ -16,7 +19,8 @@ export class ShelterEditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private shelterService: ShelterService,
-              private router: Router) { }
+              private router: Router,
+              private store: Store<fromApp.AppState>) { }
 
   ngOnInit(){
     this.route.params
@@ -76,8 +80,13 @@ export class ShelterEditComponent implements OnInit {
 
 
     if (this.editMode) {
-      const shelter = this.shelterService.getShelter(this.id);
-      shelterName = shelter.name;
+      // const shelter = this.shelterService.getShelter(this.id);
+      this.store.select('shelters').pipe(map(shelterState => {
+        return shelterState.shelters.find((shelter, index) => {
+          return index === this.id;
+        })
+      })).subscribe(shelter => {
+        shelterName = shelter.name;
       shelterImagePath = shelter.imagePath;
       shelterLocation = shelter.location;
       shelterPhoneNumber = shelter.phoneNumber;
@@ -96,6 +105,8 @@ export class ShelterEditComponent implements OnInit {
           )
         }
       }
+      })
+      
     }
     this.shelterForm = new FormGroup({
       'name': new FormControl(shelterName, Validators.required),
