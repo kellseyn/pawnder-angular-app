@@ -1,8 +1,10 @@
 import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
 import {  Shelter } from '../shelter.model';
 import { Router, ActivatedRoute } from '@angular/router';
-import {ShelterService} from '../shelter.service';
 import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../../store/app.reducer';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-shelter-list',
@@ -13,20 +15,20 @@ export class ShelterListComponent implements OnInit, OnDestroy {
   shelters: Shelter[];
   subscription: Subscription;
 
-  constructor(private shelterService: ShelterService,
-              private router: Router,
-              private route: ActivatedRoute) {
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private store: Store<fromApp.AppState>) {
 
 }
 
   ngOnInit() {
-    this.subscription = this.shelterService.sheltersChanged
+    this.subscription = this.store
+      .select('shelters')
+      .pipe(map(sheltersState => sheltersState.shelters))
       .subscribe(
         (shelters: Shelter[]) => {
           this.shelters = shelters;
-        }
-      )
-    this.shelters = this.shelterService.getShelters();
+        });
   }
 
   onNewShelter(){

@@ -5,6 +5,9 @@ import { Shelter } from '../shelters/shelter.model';
 import { ShelterService } from '../shelters/shelter.service';
 import { AuthService } from '../auth/auth.service';
 import { Animal } from '../shared/animal.model';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../store/app.reducer';
+import * as SheltersActions from '../shelters/store/shelter.actions';
 
 
 @Injectable({providedIn: 'root'})
@@ -12,7 +15,7 @@ export class DataStorageService {
     constructor(
         private http: HttpClient, 
         private shelterService: ShelterService, 
-        private authService: AuthService
+        private store: Store<fromApp.AppState>
         ) {}
 
     storeShelters() {
@@ -41,8 +44,8 @@ export class DataStorageService {
                     });
                 }),
                 tap(shelters => {
-                    this.shelterService.setShelters(shelters);        
-
+                    // this.shelterService.setShelters(shelters);        
+                    this.store.dispatch(new SheltersActions.SetShelters(shelters));
                 })
             );
     }
