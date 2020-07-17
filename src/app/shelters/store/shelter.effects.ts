@@ -1,10 +1,12 @@
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { HttpClient } from '@angular/common/http';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, withLatestFrom } from 'rxjs/operators';
 
 import * as SheltersActions from './shelter.actions';
 import { Shelter } from '../shelter.model';
 import { Injectable } from '@angular/core';
+import * as fromApp from '../../store/app.reducer';
+import { Store } from '@ngrx/store';
 
 @Injectable()
 export class ShelterEffects {
@@ -30,5 +32,17 @@ export class ShelterEffects {
         }),
     );
 
-    constructor(private actions$: Actions, private http: HttpClient) {}
+    @Effect({dispatch: false})
+    storeShelters = this.actions$.pipe(
+        ofType(SheltersActions.STORE_SHELTERS),
+        withLatestFrom(this.store.select('shelters')),
+        switchMap(([actionData, sheltersState]) => {
+            return this.http.put(
+                'https://pawnder-angular-app.firebaseio.com/shelters.json', 
+                sheltersState.shelters
+            )
+        })
+    );
+
+    constructor(private actions$: Actions, private http: HttpClient, private store: Store<fromApp.AppState>) {}
 }

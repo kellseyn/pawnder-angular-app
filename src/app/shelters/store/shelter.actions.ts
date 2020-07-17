@@ -7,6 +7,7 @@ export const FETCH_SHELTERS = '[Shelters] Fetch Shelters';
 export const ADD_SHELTER = '[Shelters] Add Shelter';
 export const UPDATE_SHELTER = '[Shelters] Update Shelter';
 export const DELETE_SHELTER = '[Shelters] Delete Shelter';
+export const STORE_SHELTERS = '[Shelters] Store Shelters';
 
 export class SetShelters implements Action {
     readonly type = SET_SHELTERS;
@@ -36,4 +37,8 @@ export class DeleteShelter implements Action {
     constructor(public payload: number) {}
 }
 
-export type SheltersActions = SetShelters | FetchShelters | AddShelter | UpdateShelter | DeleteShelter;
+export class StoreShelters implements Action {
+    readonly type = STORE_SHELTERS;
+}
+
+export type SheltersActions = SetShelters | FetchShelters | AddShelter | UpdateShelter | DeleteShelter | StoreShelters;
