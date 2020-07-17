@@ -5,6 +5,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../store/app.reducer';
 import { map, switchMap } from 'rxjs/operators';
+import * as SheltersActions from '../store/shelter.actions';
 
 @Component({
   selector: 'app-shelter-detail',
@@ -48,7 +49,8 @@ export class ShelterDetailComponent implements OnInit {
   }
 
   onDeleteShelter() {
-    this.shelterService.deleteShelter(this.id);
+    // this.shelterService.deleteShelter(this.id);
+    this.store.dispatch(new SheltersActions.DeleteShelter(this.id));
     this.router.navigate(['/shelters']);
   }
 }

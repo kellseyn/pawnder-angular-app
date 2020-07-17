@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { ShelterService } from '../shelter.service';
@@ -6,16 +6,20 @@ import { Shelter } from '../shelter.model';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../store/app.reducer';
 import { map } from 'rxjs/operators';
+import * as SheltersActions from '../store/shelter.actions';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-shelter-edit',
   templateUrl: './shelter-edit.component.html',
   styleUrls: ['./shelter-edit.component.css']
 })
-export class ShelterEditComponent implements OnInit {
+export class ShelterEditComponent implements OnInit, OnDestroy {
   id: number;
   editMode = false;
   shelterForm: FormGroup;
+
+  private storeSub: Subscription;
 
   constructor(private route: ActivatedRoute,
               private shelterService: ShelterService,
@@ -42,9 +46,16 @@ export class ShelterEditComponent implements OnInit {
       //   this.shelterForm.value['animals']);
 
       if (this.editMode) {
-        this.shelterService.updateShelter(this.id, this.shelterForm.value);
+        // this.shelterService.updateShelter(this.id, this.shelterForm.value);
+        this.store.dispatch(
+          new SheltersActions.UpdateShelter({
+            index: this.id, 
+            newShelter: this.shelterForm.value
+          })
+        );
       } else {
-        this.shelterService.addShelter(this.shelterForm.value);
+        // this.shelterService.addShelter(this.shelterForm.value);
+        this.store.dispatch(new SheltersActions.AddShelter(this.shelterForm.value))
       }
       this.onCancel();
   }
@@ -71,6 +82,12 @@ export class ShelterEditComponent implements OnInit {
     this.router.navigate(['../'], {relativeTo: this.route});
   }
 
+  ngOnDestroy() {
+    if (this.storeSub){
+      this.storeSub.unsubscribe();
+    }
+  }
+
   private initForm() {
     let shelterName = '';
     let shelterImagePath = '';
@@ -81,7 +98,7 @@ export class ShelterEditComponent implements OnInit {
 
     if (this.editMode) {
       // const shelter = this.shelterService.getShelter(this.id);
-      this.store.select('shelters').pipe(map(shelterState => {
+      this.storeSub = this.store.select('shelters').pipe(map(shelterState => {
         return shelterState.shelters.find((shelter, index) => {
           return index === this.id;
         })
