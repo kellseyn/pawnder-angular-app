@@ -58,6 +58,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('pawnder-angular-app app is running!');
+    expect(compiled.querySelector('#test').textContent).toContain('PAWnder');
   });
 });
