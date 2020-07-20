@@ -7,11 +7,11 @@
       <ul class="nav navbar-nav">
         <!-- Shelters Tab -->
         <li routerLinkActive="active" *ngIf="isAuthenticated">
-          <a role="button" (click)="onFetchShelters()"  routerLink="/shelters">Shelters</a>
+          <a role="button" (click)="onFetchShelters()"  routerLink="/shelters" class="shelters">Shelters</a>
         </li>
         <!-- Animals Tab -->
         <li routerLinkActive="active" *ngIf="isAuthenticated">
-          <a role="button" (click)="onFetchAnimals()" routerLink="/animal-list">Animals</a>
+          <a role="button" (click)="onFetchAnimals()" routerLink="/animal-list" class="animals">Animals</a>
         </li>
       </ul>
         <!-- Search Bar -->
@@ -33,10 +33,10 @@
         </li>
         <!-- Login/Logout  -->
         <li routerLinkActive="active" *ngIf="!isAuthenticated">
-          <a routerLink="/auth">Login</a>
+          <a routerLink="/auth" class="login">Login</a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a style="cursor: pointer;" (click)="onLogout()">Logout</a>
+          <a style="cursor: pointer;" (click)="onLogout()" class="logout">Logout</a>
         </li>
       </ul>
     </div>
