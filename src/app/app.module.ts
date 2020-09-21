@@ -16,6 +16,7 @@ import * as fromApp from './store/app.reducer';
 import { AuthEffects } from './auth/store/auth.effects';
 import { environment } from 'src/environments/environment';
 import { ShelterEffects } from './shelters/store/shelter.effects';
+import { UserSwipeComponent } from './user-swipe/user-swipe.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ShelterEffects } from './shelters/store/shelter.effects';
     HeaderComponent,
     FooterComponent,
     SplashComponent,
+    UserSwipeComponent,
   ],
   imports: [
     BrowserModule,
