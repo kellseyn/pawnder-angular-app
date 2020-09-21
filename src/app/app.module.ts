@@ -17,6 +17,7 @@ import { AuthEffects } from './auth/store/auth.effects';
 import { environment } from 'src/environments/environment';
 import { ShelterEffects } from './shelters/store/shelter.effects';
 import { UserSwipeComponent } from './user-swipe/user-swipe.component';
+import { UserHomeComponent } from './user-home/user-home.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { UserSwipeComponent } from './user-swipe/user-swipe.component';
     FooterComponent,
     SplashComponent,
     UserSwipeComponent,
+    UserHomeComponent,
   ],
   imports: [
     BrowserModule,
