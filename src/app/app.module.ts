@@ -16,8 +16,8 @@ import * as fromApp from './store/app.reducer';
 import { AuthEffects } from './auth/store/auth.effects';
 import { environment } from 'src/environments/environment';
 import { ShelterEffects } from './shelters/store/shelter.effects';
-import { UserSwipeComponent } from './user-swipe/user-swipe.component';
-import { UserHomeComponent } from './user-home/user-home.component';
+import { UserSwipeComponent } from './user/user-swipe/user-swipe.component';
+import { UserHomeComponent } from './user/user-home/user-home.component';
 
 @NgModule({
   declarations: [
